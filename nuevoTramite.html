@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tramite Documentario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="assets/css/estilos.css">
+
+    <script src="https://kit.fontawesome.com/017fac5817.js" crossorigin="anonymous"></script>
+</head>
+
+<body id="body">
+
+    <header>
+        <div class="icon__menu">
+            <img src="/assets/images/hamburguesa.png" id="btn_open">
+            <!-- <i class="fas fa-bars" id="btn_open"></i> -->
+        </div>
+    </header>
+
+    <div class="menu__side" id="menu_side">
+
+        <div class="name__page">
+            <i class="fas fa-brasas" title="Mis Documentos"></i>
+            <p style="font-size: 18px;">Tramite Documentario</p>
+        </div>
+
+        <div class="options__menu">
+            <a href="/misTramites.html" class="selected">
+                <div class="option__enum">
+                    <img src="/assets/images/documento.png" alt="">
+                    <!-- <i class="fas fa-file" title="Mis Tramites"></i> -->
+                    <h6>Mis Tramites</h6>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <main>
+        <div class="body__container">
+            <div class="subtitle">
+                <h2>Nuevo Documento</h2><br>
+            </div>
+            <hr>
+            <div class="container__form">
+                <form class="row mt-3 g-3 needs-validation" method="post" action="" autocomplete="off" novalidate>
+                    <div class="row d-flex justify-content-center mt-4 mb-3">
+                        <div class="col-sm-8 col-md-3">
+                            <label for="EmisionSelect" class="form-label"><b>Modo de Emision</b><span class="text-danger small">*</span> :</label>
+                            <button id="btn-abrir-modal" type="button" class="btn btn-outline-info rounded-circle btn-rounded btn-sm ml-1 px-1 py-0"><i class="fas fa-question"></i></button>
+                            <!-- <div class="btn-group bootstrap-selected form-control">
+                                <select name="modo" class="form-control selectpicker" data-style="btn btn-outline-primary" required id="id_modo" tabindex="-98">
+                                    <option value selected>---------</option>
+                                    <option value="P">Personal</option>
+                                    <option value="I">Institucional</option>slot
+                                </select>
+                            </div> -->
+                            <dialog id="modal" class="col-12 p-3">
+                                <h2>Modo de Emision</h2>
+                                <hr>
+                                <div class="mini_container">
+                                        El modo de Emisión le permite indicar si el documento que va a remitir es personal con DNI o desde una institución con RUC.
+                                    
+                                    <div class="modal_info">
+                                        <p><span>*</span>Si es personal, puede presentarlo siempre y cuando lo firme Usted; pero si el documento lo va a firmar otra persona tiene que indicar el DNI DEL FIRMANTE.</p>
+                                        <p><span>*</span>Si es institucional, tiene que indicar el RUC de la empresa e indicar el DNI DEL FIRMANTE</p>
+                                    </div>
+                                        En ambos casos debe estar tal y como está consignado los datos en el documento.
+                                </div>
+                                <button id="btn-cerrar-modal" class="btn btn-outline-secondary m-3"> Cerrar</button>
+                            </dialog>
+                            
+                            <select class="form-select" name="" id="EmisionSelect" required></select>
+                            <div class="valid-feedback">
+                                OK
+                            </div>
+                            <div class="invalid-feedback">
+                                Es necesario
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center mb-3">
+                        <div class="col-sm-8 col-md-3">
+                            <label for="DocumentoSelect" class="form-label"><b>Tipo de Documento</b><span class="text-danger small">*</span> :</label>
+                            <select class="form-select "name="" id="DocumentoSelect" required>
+                            </select>
+                            <div class="valid-feedback">
+                                OK
+                            </div>
+                            <div class="invalid-feedback">
+                                Es necesario
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-2">
+                            <label for="Numero" class="form-label"><b>Numero</b><span class="text-danger small">*</span> :</label>
+                            <input type="number" class="form-control " value="" min="0" max="10000" step="1" id="Numero" placeholder="0" required>
+                            <div class="valid-feedback">
+                                OK
+                            </div>
+                            <div class="invalid-feedback">
+                                Definir
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-3">
+                            <label for="Siglas" class="form-label">Siglas :</label>
+                            <input type="text" class="form-control " id="Siglas">
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-2">
+                            <label for="Folios" class="form-label"><b>Folios</b><span class="text-danger small">*</span> :</label>
+                            <input type="number" class="form-control " value="" min="0" max="10000" step="1" id="Folios" placeholder="0" required>
+                            <div class="valid-feedback">
+                                OK
+                            </div>
+                            <div class="invalid-feedback">
+                                Definir Folios
+                            </div>
+                        </div>
+                        <div class="col-8 col-sm-4 col-md-2">
+                            <label for="Fecha" class="form-label"><b>Fecha</b><span class="text-danger small">*</span> :</label>
+                            <input type="date" class="form-control " id="Fecha" required>
+                            <div class="valid-feedback">
+                                OK
+                            </div>
+                            <div class="invalid-feedback">
+                                Definir Fecha del Tramite
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-3">
+                        <label for="DniFirmante" class="form-label">Dni del Firmante :</label>
+                        <input type="text" class="form-control " id="DniFirmante">
+                    </div>
+                    <div class="col-sm-8 col-md-5">
+                        <label for="nomFirmante" class="form-label"><b>Nombre del Firmante</b><span class="text-danger small">*</span> :</label>
+                        <input type="text" class="form-control " name="" id="nomFirmante" required>
+                        <div class="valid-feedback">
+                            OK
+                        </div>
+                        <div class="invalid-feedback">
+                            Definir nombre
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="carFirmante" class="form-label"><b>Cargo del Firmante</b><span class="text-danger small">*</span> :</label>
+                        <input type="text" class="form-control " id="carFirmante" required>
+                        <div class="valid-feedback">
+                            OK
+                        </div>
+                        <div class="invalid-feedback">
+                            Definir cargo
+                        </div>
+                    </div>
+
+                    <fieldset class="data-user p-3" style="border: 3px solid; border-color: orange;">
+                        <div class="row d-flex justify-content-center ">    
+                            <div class="col-12 text-center">
+                                <div class="alert alert-warning p-2">
+                                    Estos datos deben de ser de la persona o entidad de donde se remite el documento,
+                                    para efectos de notificación.
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="id_departamenmto" class="form-label"><b>Departamento<span class="text-danger small">*</span></b></label>
+                                <select class="form-select" style="width: 100%;" name="" id="id_departamenmto" required>
+                                    <option value="15">LIMA</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="id_provincia" class="form-label"><b>Provincia<span class="text-danger small">*</span> :</b></label>
+                                <select name="" id="id_provincia" class="form-select" required>
+                                    <option value="15" >Huaura</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="id_distrito" class="form-label"><b>Distrito<span class="text-danger small">*</span> :</b></label>
+                                <select name="" id="id_distrito" class="form-select">
+                                    <option value="">Sayan</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="id_direccion" class="form-label"><b>Dirección<span class="text-danger small">*</span> :</b></label>
+                                <input type="text" id="id_direccion" class="form-control" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="id_telefono" class="form-label"><b>Telefono<span class="text-danger small">*</span> :</b></label>
+                                <input type="text" name="" id="id_telefono" class="form-control" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="id_email" class="form-label"><b>Correo<span class="text-danger small">*</span> :</b></label>
+                                <input type="email" name="" id="id_email" class="form-control" required>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="row d-flex justify-content-center mt-2">
+                        <div class="col-sm-12">
+                            <label for="id_asunto" class="form-label"><b>Asunto (tal y como está consignado en sudocumento)<span class="text-danger small">*</span> :</b></label>
+                            <textarea id="id_asunto" class="form-control" name="asunto" id="" cols="40" rows="2" maxlength="1000" style="resize: none;" required></textarea>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label class="form-label" for="id_dependencia"><b>Dependencia(s) Destino(s)<span class="text-danger small">*</span></b></label>
+                            <select autocomplete="off" class="form-selectname areas" id="id_dependencias" required>
+                                <option value="1">Obras</option>
+                                <option value="2">Alcaldia</option>
+                                <option value="3">Administracion</option>
+                                <option value="4">Logistica</option>
+                                <option value="5">Tesoreria</option>
+                                <option value="6">Sistemas</option>
+                                <option value="7">Desarrollo Humano</option>
+                            </select>
+                        </div>
+                        <div class="valid-feedback">
+                            Selecciona el/los destino(s)
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label for="id_dirigidoa" class="form-label"><b>Dirigido a<span class="text-danger small">*</span> :</b></label>
+                            <input type="text" name="dirigidoa" required id="id_dirigidoa" class="form-control" wfd-id="id13">
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label for="id_archivocorto" class="form-label"><b>Archivo (PDF máx 5 MB)<span class="text-danger small">*</span> :</b></label>
+                            <input type="file" class="form-control">
+                        </div>
+                        <div class="col-12 mt-4 mb-4">
+                            <!-- <button type="submit" class="btn btn-primary " style="width: 100%;"><a href="/misTramites.html" style="color: white; text-decoration: none;">Enviar</a></button> -->
+                            <button type="submit" class="btn btn-primary " style="width: 100%;">Enviar</button>
+                        </div>
+                    </div>
+                    
+
+                    
+                    
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+    <script>
+        new MultiSelectTag('id_dependencias')  // id
+    </script>
+</body>
+
+</html>

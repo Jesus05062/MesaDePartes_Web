@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tramite Documentario</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/estilos.css">
+    <script src="https://kit.fontawesome.com/017fac5817.js" crossorigin="anonymous"></script>
+</head>
+<body id="body">
+    <header>
+        <div class="icon__menu">
+            <img src="/assets/images/hamburguesa.png" id="btn_open">
+            <!-- <i class="fas fa-bars" id="btn_open"></i> -->
+        </div>
+    </header>
+    <div class="menu__side" id="menu_side">
+        <div class="name__page">
+            <i class="fas fa-brasas" title="Mis Documentos"></i>
+            <p style="font-size: 18px;">Tramite Documentario</p>
+        </div>
+        <div class="options__menu">
+            <a href="/misTramites.html" class="selected">
+                <div class="option__enum">
+                    <img src="/assets/images/documento.png" alt="">
+                    <!-- <i class="fas fa-file" title="Mis Tramites"></i> -->
+                    <h6>Mis Tramites</h6>
+                </div>
+            </a>
+        </div>
+    </div>
+    <main id="main">
+        <div class="p-2">
+            <h3><span>Mis tramites</span></h3>
+        </div>
+        <div class="container__body">
+            <div class="widget-content-area">
+                <div class="row d-flex">
+                    <div class="col-md-12 col-lg-4 text-center text-md-left">
+                        <a href="/nuevoTramite.html" style="color: white; text-decoration: none;"><button
+                                class="btn btn-primary btn-rounded mb-3 mb-lg-0">Nuevo Tramite</button></a>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-2">
+                        <div class="form-group">
+                            <div class="form-control search">
+                                <i class="fas fa-calendar"></i>
+                                &nbsp;
+                                <span>Últimos 30 Días</span>
+                                <input id="" type="text" class="hidden">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-2">
+                        <div class="form-group search">
+                            <input type="text" class="form-control" placeholder="Buscar">
+                        </div>
+                    </div>
+                </div>
+                <div class="paginado">
+                    <div class="table-responsive mb-2 mb-md-0">
+                        <table class="table table-bordered table-hover table-striper mb-3">
+                            <thead>
+                                <tr class="text-center">
+                                    <th class="text-primary" style="max-width: 140px;">Solicitud</th>
+                                    <th class="text-primary">Fecha solicitud</th>
+                                    <th class="text-primary">Documento</th>
+                                    <th class="text-primary">Asunto</th>
+                                    <th class="text-primary">Destino</th>
+                                    <th class="text-primary" style="max-width: 160px;">Expediente</th>
+                                    <th class="text-primary">Estado</th>
+                                    <th class="text-primary">Estado Fecha</th>
+                                    <th class="text-primary" style="max-width: 60px;">Doc</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="8">No se encontraron documentos</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 text-center text-md-left mb-2 mb-md-0 small">
+                            <button class="btn btn-outline-dark rounded-circle btn-rounded p-0 d-inline-block mr-1 px-1"
+                                onclick="fitrarLista()">
+                                <i class="fa fa-refresh"></i>
+                            </button>
+                            0 registros
+                        </div>
+                        <div class="col-md-10 d-flex justify-content-center fy-content-md-end">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- <script src="/assets/js/insert_menu.js"></script> -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
