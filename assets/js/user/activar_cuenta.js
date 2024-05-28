@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "Content-Type": "application/json"
         }
     }).then(res => {
-        console.log("Hola");
         if (res.status === 200) {
             return res.json().then(response => {
                 console.log(response);
@@ -115,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (key === 'departamento' || key === 'provincia' || key === 'distrito') {
                 const select = document.querySelector(`#id_${key}`);
                 const selted = select.options[select.selectedIndex].text;
-
+                
                 formObject[key] = selted;
             } else {
                 formObject[key] = value;

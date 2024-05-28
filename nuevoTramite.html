@@ -6,21 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tramite Documentario</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
 
     <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="assets/css/estilos.css">
+    <!-- <link rel="stylesheet" href="assets/css/estilos_nuevoTramite.css"> -->
 
     <script src="https://kit.fontawesome.com/017fac5817.js" crossorigin="anonymous"></script>
 </head>
 
 <body id="body">
+    <style>
+        /* Estilos para centrar el modal */
+        .modal-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: none;
+            background: none;
+            text-align: center;
+        }
+    </style>
 
     <header>
         <div class="icon__menu">
             <img src="/assets/images/hamburguesa.png" id="btn_open">
             <!-- <i class="fas fa-bars" id="btn_open"></i> -->
+        </div>
+        <div class="icon__user">
+            <img src="assets/images/perfil64px.png" alt="">
         </div>
     </header>
 
@@ -34,7 +51,7 @@
         <div class="options__menu">
             <a href="/misTramites.html" class="selected">
                 <div class="option__enum">
-                    <img src="/assets/images/documento.png" alt="">
+                    <img src="/assets/images/documento.png" alt="" title="Mis tramites">
                     <!-- <i class="fas fa-file" title="Mis Tramites"></i> -->
                     <h6>Mis Tramites</h6>
                 </div>
@@ -48,12 +65,15 @@
                 <h2>Nuevo Documento</h2><br>
             </div>
             <hr>
-            <div class="container__form">
+            <div class="container__body">
                 <form class="row mt-3 g-3 needs-validation" method="post" action="" autocomplete="off" novalidate>
                     <div class="row d-flex justify-content-center mt-4 mb-3">
                         <div class="col-sm-8 col-md-3">
-                            <label for="EmisionSelect" class="form-label"><b>Modo de Emision</b><span class="text-danger small">*</span> :</label>
-                            <button id="btn-abrir-modal" type="button" class="btn btn-outline-info rounded-circle btn-rounded btn-sm ml-1 px-1 py-0"><i class="fas fa-question"></i></button>
+                            <label for="id_modoEmision" class="form-label"><b>Modo de Emision</b><span
+                                    class="text-danger small">*</span> :</label>
+                            <button id="btn-abrir-modal" type="button"
+                                class="btn btn-outline-info rounded-circle btn-rounded btn-sm ml-1 px-1 py-0" aria-haspopup="dialog" aria-controls="modal"><i
+                                    class="fas fa-question"></i></button>
                             <!-- <div class="btn-group bootstrap-selected form-control">
                                 <select name="modo" class="form-control selectpicker" data-style="btn btn-outline-primary" required id="id_modo" tabindex="-98">
                                     <option value selected>---------</option>
@@ -64,19 +84,28 @@
                             <dialog id="modal" class="col-12 p-3">
                                 <h2>Modo de Emision</h2>
                                 <hr>
+
                                 <div class="mini_container">
-                                        El modo de Emisión le permite indicar si el documento que va a remitir es personal con DNI o desde una institución con RUC.
-                                    
+                                    El modo de Emisión le permite indicar si el documento que va a remitir es personal
+                                    con DNI o desde una institución con RUC.
+
                                     <div class="modal_info">
-                                        <p><span>*</span>Si es personal, puede presentarlo siempre y cuando lo firme Usted; pero si el documento lo va a firmar otra persona tiene que indicar el DNI DEL FIRMANTE.</p>
-                                        <p><span>*</span>Si es institucional, tiene que indicar el RUC de la empresa e indicar el DNI DEL FIRMANTE</p>
+                                        <p><span>*</span>Si es personal, puede presentarlo siempre y cuando lo firme
+                                            Usted; pero si el documento lo va a firmar otra persona tiene que indicar el
+                                            DNI DEL FIRMANTE.</p>
+                                        <p><span>*</span>Si es institucional, tiene que indicar el RUC de la empresa e
+                                            indicar el DNI DEL FIRMANTE</p>
                                     </div>
-                                        En ambos casos debe estar tal y como está consignado los datos en el documento.
+                                    En ambos casos debe estar tal y como está consignado los datos en el documento.
                                 </div>
                                 <button id="btn-cerrar-modal" class="btn btn-outline-secondary m-3"> Cerrar</button>
                             </dialog>
-                            
-                            <select class="form-select" name="" id="EmisionSelect" required></select>
+
+                            <select class="form-select" name="tipoEmision" id="id_modoEmision" required>
+                                <option value="">Seleccione...</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Institucional">Institucional</option>
+                            </select>
                             <div class="valid-feedback">
                                 OK
                             </div>
@@ -84,11 +113,38 @@
                                 Es necesario
                             </div>
                         </div>
+                        <div class="col-sm-8 col-md-3" id="id_rucField" style="display: none;">
+                            <label for="id_ruc" class="form-label"><b>RUC</b><span class="text-danger small">*</span>
+                                :</label>
+                            <input type="text" name="ruc" minlength="7" maxlength="15" class="form-control"
+                                placeholder="Número de Documento" id="id_ruc"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                        </div>
                     </div>
+
                     <div class="row d-flex justify-content-center mb-3">
                         <div class="col-sm-8 col-md-3">
-                            <label for="DocumentoSelect" class="form-label"><b>Tipo de Documento</b><span class="text-danger small">*</span> :</label>
-                            <select class="form-select "name="" id="DocumentoSelect" required>
+                            <label for="id_tipoDocumento" class="form-label"><b>Tipo de Documento</b><span
+                                    class="text-danger small">*</span> :</label>
+                            <select class="form-select selectpicker" name="" id="id_tipoDocumento" required>
+                                <option value="">Seleccione...</option>
+                                <option value="Acta">Acta</option>
+                                <option value="Adenda">Adenda</option>
+                                <option value="Carta">Carta</option>
+                                <option value="Carta Multiple">Carta Multiple</option>
+                                <option value="Carta Notarial">Carta Notarial</option>
+                                <option value="Cédula de Notificación">Cédula de Notificación</option>
+                                <option value="Declaración Jurada">Declaración Jurada</option>
+                                <option value="Expediente">Expediente</option>
+                                <option value="Expediente Judicial">Expediente Judicial</option>
+                                <option value="Informe">Informe</option>
+                                <option value="Memorando">Memorando</option>
+                                <option value="Memorando Multiple">Memorando Múltiple</option>
+                                <option value="Oficio">Oficio</option>
+                                <option value="Oficio Multiple">Oficio Múltiple</option>
+                                <option value="Proveido">Proveido</option>
+                                <option value="Recurso de Aplicacion">Recurso de Apelación</option>
+                                <option value="Requerimiento">Requerimiento</option>
                             </select>
                             <div class="valid-feedback">
                                 OK
@@ -98,8 +154,10 @@
                             </div>
                         </div>
                         <div class="col-sm-4 col-md-2">
-                            <label for="Numero" class="form-label"><b>Numero</b><span class="text-danger small">*</span> :</label>
-                            <input type="number" class="form-control " value="" min="0" max="10000" step="1" id="Numero" placeholder="0" required>
+                            <label for="id_documento" class="form-label"><b>Documento</b><span
+                                    class="text-danger small">*</span> :</label>
+                            <input type="text" class="form-control " value="" min="0" max="10000" step="1"
+                                id="id_documento" placeholder="0" required>
                             <div class="valid-feedback">
                                 OK
                             </div>
@@ -108,22 +166,15 @@
                             </div>
                         </div>
                         <div class="col-sm-4 col-md-3">
-                            <label for="Siglas" class="form-label">Siglas :</label>
-                            <input type="text" class="form-control " id="Siglas">
-                        </div>
-                        <div class="col-4 col-sm-4 col-md-2">
-                            <label for="Folios" class="form-label"><b>Folios</b><span class="text-danger small">*</span> :</label>
-                            <input type="number" class="form-control " value="" min="0" max="10000" step="1" id="Folios" placeholder="0" required>
-                            <div class="valid-feedback">
-                                OK
-                            </div>
-                            <div class="invalid-feedback">
-                                Definir Folios
-                            </div>
+                            <label for="id_folios" class="form-label"><b>N° Folios</b> <span
+                                    class="text-danger small">*</span> :</label>
+                            <input type="text" class="form-control " id="id_folios"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                         </div>
                         <div class="col-8 col-sm-4 col-md-2">
-                            <label for="Fecha" class="form-label"><b>Fecha</b><span class="text-danger small">*</span> :</label>
-                            <input type="date" class="form-control " id="Fecha" required>
+                            <label for="id_fecha" class="form-label"><b>Fecha</b><span class="text-danger small">*</span>
+                                :</label>
+                            <input type="date" class="form-control " id="id_fecha" required>
                             <div class="valid-feedback">
                                 OK
                             </div>
@@ -133,12 +184,15 @@
                         </div>
                     </div>
                     <div class="col-sm-4 col-md-3">
-                        <label for="DniFirmante" class="form-label">Dni del Firmante :</label>
-                        <input type="text" class="form-control " id="DniFirmante">
+                        <label for="id_dniFirmante" class="form-label">Dni del Firmante :</label>
+                        <input type="text" class="form-control " id="id_dniFirmante"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                     </div>
                     <div class="col-sm-8 col-md-5">
-                        <label for="nomFirmante" class="form-label"><b>Nombre del Firmante</b><span class="text-danger small">*</span> :</label>
-                        <input type="text" class="form-control " name="" id="nomFirmante" required>
+                        <label for="id_nombreFirmante" class="form-label"><b>Nombre del Firmante</b><span
+                                class="text-danger small">*</span> :</label>
+                        <input type="text" class="form-control " name="" id="id_nombreFirmante"
+                            oninput="this.value = this.value.replace(/[^a-z,^A-Z]/g, '')" required>
                         <div class="valid-feedback">
                             OK
                         </div>
@@ -147,8 +201,9 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="carFirmante" class="form-label"><b>Cargo del Firmante</b><span class="text-danger small">*</span> :</label>
-                        <input type="text" class="form-control " id="carFirmante" required>
+                        <label for="id_cargoFirmante" class="form-label"><b>Cargo del Firmante</b><span
+                                class="text-danger small">*</span> :</label>
+                        <input type="text" class="form-control " id="id_cargoFirmante" required>
                         <div class="valid-feedback">
                             OK
                         </div>
@@ -158,53 +213,102 @@
                     </div>
 
                     <fieldset class="data-user p-3" style="border: 3px solid; border-color: orange;">
-                        <div class="row d-flex justify-content-center ">    
+                        <div class="row d-flex justify-content-center ">
                             <div class="col-12 text-center">
                                 <div class="alert alert-warning p-2">
                                     Estos datos deben de ser de la persona o entidad de donde se remite el documento,
                                     para efectos de notificación.
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <label for="id_departamenmto" class="form-label"><b>Departamento<span class="text-danger small">*</span></b></label>
+                            <!-- <div class="col-sm-4">
+                                <label for="id_departamenmto" class="form-label"><b>Departamento<span
+                                            class="text-danger small">*</span></b></label>
                                 <select class="form-select" style="width: 100%;" name="" id="id_departamenmto" required>
                                     <option value="15">LIMA</option>
                                 </select>
                             </div>
                             <div class="col-sm-4">
-                                <label for="id_provincia" class="form-label"><b>Provincia<span class="text-danger small">*</span> :</b></label>
+                                <label for="id_provincia" class="form-label"><b>Provincia<span
+                                            class="text-danger small">*</span> :</b></label>
                                 <select name="" id="id_provincia" class="form-select" required>
-                                    <option value="15" >Huaura</option>
+                                    <option value="15">Huaura</option>
                                 </select>
                             </div>
                             <div class="col-sm-4">
-                                <label for="id_distrito" class="form-label"><b>Distrito<span class="text-danger small">*</span> :</b></label>
+                                <label for="id_distrito" class="form-label"><b>Distrito<span
+                                            class="text-danger small">*</span> :</b></label>
                                 <select name="" id="id_distrito" class="form-select">
                                     <option value="">Sayan</option>
                                 </select>
+                            </div> -->
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_departamento" class="form-label"><b>Departamento<span
+                                            class="text-danger small">*</span></b></label>
+                                <select name="departamento" class="form-control selectpicker"
+                                    data-minimum-results-for-search="-1" style="width: 100%"
+                                    data-minimum-input-length="0" placeholder="Departamento" id="id_departamento">
+                                </select>
+                            </div>
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_provincia" class="form-label"><b>Provincia<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <select name="provincia" class="form-control selectpicker"
+                                    data-minimum-results-for-search="-1" style="width: 100%"
+                                    data-minimum-input-length="0" placeholder="Provincia" id="id_provincia">
+                                </select>
+                            </div>
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_distrito" class="form-label"><b>Distrito<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <select name="distrito" class="form-control selectpicker"
+                                    data-minimum-results-for-search="-1" style="width: 100%"
+                                    data-minimum-input-length="0" placeholder="Distrito" id="id_distrito">
+                                </select>
                             </div>
                             <div class="col-sm-6">
-                                <label for="id_direccion" class="form-label"><b>Dirección<span class="text-danger small">*</span> :</b></label>
+                                <label for="id_direccion" class="form-label"><b>Dirección<span
+                                            class="text-danger small">*</span> :</b></label>
                                 <input type="text" id="id_direccion" class="form-control" required>
                             </div>
                             <div class="col-sm-3">
-                                <label for="id_telefono" class="form-label"><b>Telefono<span class="text-danger small">*</span> :</b></label>
-                                <input type="text" name="" id="id_telefono" class="form-control" required>
+                                <label for="id_telefono" class="form-label"><b>Telefono<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <input type="text" name="" id="id_telefono" class="form-control"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9)" required>
                             </div>
                             <div class="col-sm-3">
-                                <label for="id_email" class="form-label"><b>Correo<span class="text-danger small">*</span> :</b></label>
-                                <input type="email" name="" id="id_email" class="form-control" required>
+                                <label for="id_email" class="form-label"><b>Correo<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <input type="email" name="email" maxlength="254" class="form-control"
+                                    placeholder="Ejemplo@gmail.com" required id="id_email">
                             </div>
                         </div>
                     </fieldset>
 
                     <div class="row d-flex justify-content-center mt-2">
                         <div class="col-sm-12">
-                            <label for="id_asunto" class="form-label"><b>Asunto (tal y como está consignado en sudocumento)<span class="text-danger small">*</span> :</b></label>
-                            <textarea id="id_asunto" class="form-control" name="asunto" id="" cols="40" rows="2" maxlength="1000" style="resize: none;" required></textarea>
+                            <label for="id_asunto" class="form-label"><b>Asunto (tal y como está consignado en
+                                    sudocumento)<span class="text-danger small">*</span> :</b></label>
+                            <textarea id="id_asunto" class="form-control" name="asunto" id="" cols="40" rows="2"
+                                maxlength="1000" style="resize: none;" required></textarea>
                         </div>
                         <div class="col-md-6 mt-2">
-                            <label class="form-label" for="id_dependencia"><b>Dependencia(s) Destino(s)<span class="text-danger small">*</span></b></label>
+                            <label class="form-label" for="id_dependencia"><b>Dependencia(s) Destino(s)<span
+                                        class="text-danger small">*</span></b></label>
+                            <select autocomplete="off" class="form-selectname areas form-control" id="id_dependencia"
+                                required>
+                                <option value="">Seleccione...</option>
+                            </select>
+                            <div class="valid-feedback">
+                                OK
+                            </div>
+                            <div class="invalid-feedback">
+                                Es necesario
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-6 mt-2">
+                            <label class="form-label" for="id_dependencia"><b>Dependencia(s) Destino(s)<span
+                                        class="text-danger small">*</span></b></label>
                             <select autocomplete="off" class="form-selectname areas" id="id_dependencias" required>
                                 <option value="1">Obras</option>
                                 <option value="2">Alcaldia</option>
@@ -214,33 +318,166 @@
                                 <option value="6">Sistemas</option>
                                 <option value="7">Desarrollo Humano</option>
                             </select>
-                        </div>
+                        </div> 
                         <div class="valid-feedback">
                             Selecciona el/los destino(s)
+                        </div> -->
+                        <div class="col-md-6 mt-2">
+                            <label for="id_dirigidoa" class="form-label"><b>Dirigido a<span
+                                        class="text-danger small">*</span> :</b></label>
+                            <input type="text" name="dirigidoa" required id="id_dirigidoa" class="form-control"
+                                wfd-id="id13">
                         </div>
                         <div class="col-md-6 mt-2">
-                            <label for="id_dirigidoa" class="form-label"><b>Dirigido a<span class="text-danger small">*</span> :</b></label>
-                            <input type="text" name="dirigidoa" required id="id_dirigidoa" class="form-control" wfd-id="id13">
+                            <label for="id_archivocorto" class="form-label"><b>Archivo (PDF máx 5 MB)<span
+                                        class="text-danger small">*</span> :</b></label>
+                            <input type="file" class="form-control" accept="application/pdf" id="id_archivocorto"
+                                required>
                         </div>
                         <div class="col-md-6 mt-2">
-                            <label for="id_archivocorto" class="form-label"><b>Archivo (PDF máx 5 MB)<span class="text-danger small">*</span> :</b></label>
-                            <input type="file" class="form-control">
+                            <label for="id_anexo" class="form-label"><b>URL del Anexo (leer indicaciones)</b><span
+                                    class="text-danger small">*</span> :<button id="btn-abrir-info-anexo" type="button"
+                                    class="btn btn-outline-info rounded-circle btn-rounded btn-sm ml-1 px-1 py-0"><i
+                                        class="fas fa-question"></i></button></label>
+
+                            <dialog id="modal-info-anexo" class="col-12 p-3" aria-hidden="true"
+                                style="background-color: #ffffff; border: none; border-radius: 10px; position: flex; margin: auto; max-width: 700px; padding: 10px;">
+                                <p class="text-primary">Urls permitidas</p>
+                                <hr>
+                                <div class="text-center">
+                                    Si es un solo archivo, comparta la URL del mismo; pero si son varios archivos deberá
+                                    comprimirlos y luego compartir <b class="text-primary">la URL sólo del archivo
+                                        comprimido</b>, más no de toda la
+                                    carpeta. <br>
+                                    Las URLs permitidas de las páginas donde se pueden almacenar los archivos, deberán
+                                    cumplir el siguiente formato:
+                                </div>
+                                <div class="row d-flex justify-content-center justify-content-cente">
+                                    <div style="width: 180px; padding: 10px;">
+                                        <img src="/assets/images/GOOGLE_DRIVE.jpg" alt="" style="width: 100%;">
+                                    </div>
+                                    <div style="width: 180px;padding: 10px;">
+                                        <img src="/assets/images/ONE_DRIVE.png" alt="" style="width: 100%;">
+                                    </div>
+                                    <div style="width: 180px;padding: 10px;">
+                                        <img src="/assets/images/MEGA.png" alt="" style="width: 100%;">
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button id="btn-cerrar-info-anexo" class="btn btn-outline-secondary m-3">
+                                        Cerra</button>
+                                </div>
+                            </dialog>
+
+                            <input id="id_anexo" type="text" class="form-control" style="height: 50px;">
                         </div>
                         <div class="col-12 mt-4 mb-4">
-                            <!-- <button type="submit" class="btn btn-primary " style="width: 100%;"><a href="/misTramites.html" style="color: white; text-decoration: none;">Enviar</a></button> -->
                             <button type="submit" class="btn btn-primary " style="width: 100%;">Enviar</button>
                         </div>
                     </div>
-                    
-
-                    
-                    
                 </form>
+                <!--------------------------- Info --------------------------->
+                <dialog class="" id="modal-message-alert" aria-labelledby="exampleModalLabel" aria-hidden="true"
+                    style="background-color: #ffffff; border: none; border-radius: 10px; position: fixed; margin: auto; max-width: 900px; padding: 20px;">
+                    <div class="" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header text-center d-flex justify-content-center">
+                                <img src="/assets/images/alert.png" alt="" style="display: block; margin: 0 auto;">
+                            </div>
+                            <div class="modal-body text-justify small" style="text-align: justify; font-size: 12px;">
+                                Estimado(a) Usuario(a) se le comunica que los escritos ingresados por trámite digital
+                                serán recepcionados en el horario establecido en la Directiva N° 2-2022-GR.CAJ/DRTD
+                                numeral 7.2, literal f), que norma la Implementación y Funcionamiento del Sistema de
+                                Gestión Documental: "MAD3 – CERO PAPEL" Y MESA DE PARTES DIGITAL: "TRÁMITE DIGITAL":
+                                <br>
+                                <div class="m-auto px-3 py-1 mt-1"
+                                    style="font-style: italic; border-radius: 4px; width: 98%; font-size: 12px; background-color: rgba(184, 176, 176, 0.731); border: 1px solid rgb(129, 123, 123);">
+                                    Los horarios de atención para la recepción de los documentos en la mesa de partes
+                                    digital "Trámite Digital" son:
+                                    <br>
+                                    <br>
+                                    <p>
+                                        • Documentos presentados desde las 00:00 horas hasta el término del horario de
+                                        atención de la entidad de un día hábil, se consideran presentados el mismo día.
+                                        <br>
+                                        • Documentos presentados después del horario de atención de la entidad hasta las
+                                        23:59 horas, se consideran presentados el día hábil siguiente.
+                                        <br>
+                                        • Documentos presentados los sábados, domingos, feriados o no laborable para el
+                                        sector
+                                        público, se consideran presentados al primer día hábil siguiente.
+                                    </p>
+                                </div>
+                                Asimismo, se hace de conocimiento que los escritos deberán cumplir con los requisitos
+                                prescritos en el artículo 124 del Texto Único Ordenado de la Ley N° 27444, Ley del
+                                Procedimiento Administrativo General, aprobado con Decreto Supremo N° 004-2019-JUS, los
+                                mismos que se detallan a continuación:
+                                <div class="pt-1">
+                                    1. <b>Persona natural:</b> Nombre y apellidos completos, dirección y número de DNI o
+                                    carnet de
+                                    extranjería (de ser el caso), <b>Persona Jurídica:</b> Número de RUC, dirección,
+                                    Nombre y
+                                    apellidos completos y número de DNI del representante legal y en su caso, la calidad
+                                    de representante y de la persona a la que represente. <br>
+                                    2. <b>La expresión concreta de lo pedido,</b> los fundamentos de hecho que lo apoye
+                                    y, cuando
+                                    le sea posible, los de derecho. <br>
+                                    3. <b>Lugar, fecha, firma o huella digital,</b> en caso de no saber firmar o estar
+                                    impedido. <br>
+                                    4. <b>La indicación del órgano, la entidad o la autoridad a la cual está
+                                        dirigida,</b>
+                                    entendiéndose por tal, en lo posible, a la autoridad del grado más cercano al
+                                    usuario, según la jerarquía, con competencia para conocerlo y resolverlo. <br>
+                                    5. <b>De ser el caso, dirección del lugar donde desea recibir las notificaciones del
+                                        procedimiento,</b> cuando sea diferente al domicilio real expuesto en virtud del
+                                    numeral
+                                    1. Este señalamiento surte sus efectos desde su indicación y es presumido
+                                    subsistente, mientras no sea comunicado expresamente su cambio. <br>
+                                    6. <b>La relación de los documentos y anexos que acompaña su escrito,</b> indicados
+                                    en el
+                                    TUPA. <br>
+                                    7. La identificación del expediente de la materia, tratándose de procedimientos ya
+                                    iniciados. <br><br>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button id="btn-cerrar-message-alert" class="btn btn-primary">
+                                    Entendido
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </dialog>
+
             </div>
         </div>
-    </main>
 
-    <script src="assets/js/script.js"></script>
+    </main>
+    <!--------------- Cargando ---------------->
+    <dialog id="loading" class="modal-dialog">
+        <div>
+            <img src="/assets/images/loading.gif" alt="Cargando...">
+        </div>
+    </dialog>
+
+    <!---------------  Errores ---------------->
+    <dialog class="" id="modal-error" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        style="background-color: #f12626ec; border: none; border-radius: 10px; width: 70%;">
+        <div class="" role="document">
+            <div class="modal-content text-white">
+                <div class="modal-header d-flex">
+                    <h5 class="modal-title" id="exampleModalLabel">Se encontraron excepciones</h5>
+                    <button type="button" id="btn-cerrar-modal-error" class="btn btn-primary ms-auto"
+                        data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <hr>
+                <div class="modal-body text-justify small" id="div-msg-error">
+                </div>
+            </div>
+        </div>
+    </dialog>
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (() => {
@@ -263,9 +500,13 @@
         })()
     </script>
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
-    <script>
+    <!-- <script>
         new MultiSelectTag('id_dependencias')  // id
-    </script>
+    </script> -->
+    <script src="assets/js/script_menu.js"></script>
+    <script src="assets/js/func_nuevo_tramite.js"></script>
+    <!-- <script src="/assets/js/tramite/nuevo_tramite.js"></script> -->
+    <script src="/assets/js/borrador.js"></script>
 </body>
 
 </html>

@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedValue = this.value;
 
         const nombresField = document.querySelector("#id_nombres");
-        const inputNombres = nombresField.querySelector("input")
+        const inputNombres = nombresField.querySelector("input");
         const paternoField = document.querySelector("#id_paterno");
         const inputPaterno = paternoField.querySelector("input");
         const maternoField = document.querySelector("#id_materno");

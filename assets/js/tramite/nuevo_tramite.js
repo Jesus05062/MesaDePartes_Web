@@ -1,46 +1,21 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const createErrors = (e) => {
-        const msgError = document.createElement("p");
-        const space = document.createElement("br");
-        msgError.textContent = e;
-        divErrores.append(msgError);
-        divErrores.append(space);
-    };
-
-    /* ---------------Funcionalidad del modal Errores--------------- */
-    const btnCerrarModal = document.querySelector("#btn-cerrar-modal-error");
-    const modal = document.querySelector("#modal-error");
-    const divErrores = document.querySelector("#div-msg-error");
-
-    btnCerrarModal.addEventListener("click", () => {
-        modal.close();
-    });
-
+/* document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form");
 
-    const loadingDiv = document.querySelector("#loading");
-
-    /* ---------------Formulario--------------- */
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
-
-        const url = "https://munisayan.gob.pe/tramite/api/user/solResPas";
+        const url = "";
 
         const formData = new FormData(form);
-        const formObject = {};
+        const formObject = {}
 
         for (const [key, value] of formData) {
             formObject[key] = value;
         }
 
-        //console.log(JSON.stringify(formObject));
-
-        loadingDiv.showModal();
-
-        console.log(JSON.stringify(formObject))
+        console.log(JSON.stringify(formObject));
 
         await fetch(url, {
-            method: "PATCH",
+            method: "PUT",
             body: JSON.stringify(formObject),
             headers: {
                 "Content-Type": "application/json"
@@ -51,18 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
             divErrores.innerHTML = "";
             if (res.status === 200) {
                 return res.json().then(respuesta => {
-                    localStorage.setItem("email", respuesta.usuario.email);
-                    localStorage.setItem("documento", respuesta.usuario.documento);
-                    window.location.href = 'validarCodigo.html';
+                    window.location.href = 'misTramites.html';
                 });
-            } else if (res.status === 404) {
+            } else if (res.status === 400) {
                 return res.json().then(respuesta => {
                     console.error(`Mensaje: ${respuesta.msg}`);
                     const msgerr = "• " + respuesta.msg;
                     createErrors(msgerr);
                     modal.showModal();
                 });
-            } else if (res.status === 400) {
+            } else if (res.status === 404) {
                 return res.json().then(respuesta => {
                     console.error(`Mensaje: ${respuesta.errors.msg}`);
                     const msgerr = "• " + respuesta.errors.msg;
@@ -80,5 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
             modal.showModal();
             console.error(error);
         });
-    });
+
+    })
 })
+ */

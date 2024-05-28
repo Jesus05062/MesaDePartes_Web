@@ -87,7 +87,8 @@
                                             </div>
 
                                             <form>
-                                                <p class="text-center" style="font-size: 20px;">Hemos enviando un correo electrónico a
+                                                <p class="text-center" style="font-size: 20px;">Hemos enviando un correo
+                                                    electrónico a
                                                     <strong id="user-email"></strong>
                                                     con su código de verificación.
                                                 </p>
@@ -95,12 +96,13 @@
                                                     const userEmail = localStorage.getItem('email');
                                                     document.getElementById('user-email').textContent = userEmail;
                                                 </script>
-                                                <div class="form-outline mb-4">
-                                                    <div></div>
+                                                <div
+                                                    class="form-outline mb-4 text-center d-flex flex-column align-items-center">
+
                                                     <label class="form-label text-white" for="id_codigo">Codigo de
                                                         verificación:</label>
-                                                    <input name="codigo" type="text" id="id_codigo"
-                                                        class="form-control" placeholder="Codigo de Verificacion"
+                                                    <input style="width: 30%;" name="codigo" type="text" id="id_codigo"
+                                                        class="form-control" placeholder=""
                                                         oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase()"
                                                         required />
                                                 </div>
@@ -155,6 +157,18 @@
                                                     <i class="toggle-password text-black fas fa-eye-slash"></i>
                                                 </div>
                                                 <script>
+                                                    window.addEventListener('beforeunload', function (e) {
+                                                        // Cancela el evento de cierre por defecto
+                                                        e.preventDefault();
+                                                        // Mensaje que se mostrará en el alert
+                                                        var confirmationMessage = '¿Seguro que deseas abandonar la página?';
+                                                        // Se asigna el mensaje al evento
+                                                        e.returnValue = confirmationMessage;
+                                                        // Retorna el mensaje, aunque la mayoría de los navegadores lo ignorarán
+                                                        return confirmationMessage;
+                                                    });
+                                                </script>
+                                                <script>
                                                     // JavaScript para alternar la visibilidad de la contraseña
                                                     const togglePassword = document.querySelector('.toggle-password');
                                                     const passwordField = document.getElementById('id_confirmPassword');
@@ -175,7 +189,7 @@
 
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -210,7 +224,7 @@
             </div>
         </div>
     </dialog>
-    
+
     <script src="/assets/js/user/validar_codigo.js"></script>
 
 </body>

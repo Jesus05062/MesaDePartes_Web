@@ -1,6 +1,5 @@
 body{
     padding: 50px;
-
 }
 #modal::backdrop{
     background-color: rgb(183, 174, 174);
