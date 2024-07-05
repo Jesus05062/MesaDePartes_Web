@@ -6,15 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Iniciar Sesión</title>
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
-
-    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <title>Tramite Documentario</title>
+    <!-- <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css"> -->
 
     <link rel="stylesheet" href="/assets/css/body_style.css">
+    <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js">
+
     <script src="https://kit.fontawesome.com/017fac5817.js" crossorigin="anonymous"></script>
 
+    <!-- Agregar el favicon -->
+    <link rel="icon" href="https://munisayan.gob.pe/Rentas/Recursos/logo1.png" type="image/x-icon">
 </head>
 
 <body>
@@ -56,13 +59,15 @@
             justify-content: center;
             min-height: 100vh;
         }
+
         .form-outline {
             position: relative;
             margin-bottom: 1rem;
         }
 
         .form-outline input {
-            padding-right: 35px; /* Ajusta el espacio a la derecha para el icono */
+            padding-right: 35px;
+            /* Ajusta el espacio a la derecha para el icono */
         }
 
         .toggle-password {
@@ -74,32 +79,31 @@
         }
     </style>
     <div>
-        <div class="container vertical-center">
+        <div class="container vertical-center" style="margin: auto;">
             <section class="h-100 gradient-form">
-                <div class="container h-100">
+                <div class="container h-10">
                     <div class="row d-flex justify-content-center align-items-center h-100">
                         <div class="col-xl-10">
                             <div class="card rounded-3 text-black text-white" id="content__form">
                                 <div class="row g-0">
-                                    <div class="col-lg-6">
-                                        <div class="card-body  mx-md-4" >
+                                    <div class="col-lg-5 aling-middle"
+                                        style="margin: auto">
+                                        <div class="card-body mx-md-4">
 
                                             <div class="text-center">
-                                                <h4 class="mt-1 mb-1 pb-1">Sistema de Tramite documentario</h4>
+                                                <h4 id="name_title" class="mt-1 mb-1 pb-1">Sistema de Tramite documentario</h4>
                                             </div>
 
                                             <form>
-                                                <p class="small">CIUDADANO: Para iniciar sesión debe usar como Usuario: su DNI o RUC y como Contraseña: la que Ud. ha consignado al momento de registrarse.</p>
-
                                                 <div class="form-outline mb-4">
-                                                    <label class="form-label text-white"
-                                                        for="form2Example11">Documento:</label>
+                                                    <label class="form-label text-white" for="form2Example11">DNI O
+                                                        RUC:</label>
                                                     <input name="documento" type="text" id="form2Example11"
-                                                        class="form-control" placeholder="Documento"
+                                                        class="form-control" placeholder="Número"
                                                         oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                                                         required />
                                                 </div>
-                                                
+
                                                 <div class="form-outline mb-2">
                                                     <label class="form-label text-white"
                                                         for="id_Password">Contraseña:</label>
@@ -111,7 +115,7 @@
                                                     // JavaScript para alternar la visibilidad de la contraseña
                                                     const togglePassword = document.querySelector('.toggle-password');
                                                     const passwordField = document.getElementById('id_Password');
-                                            
+
                                                     togglePassword.addEventListener('click', function () {
                                                         const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
                                                         passwordField.setAttribute('type', type);
@@ -122,9 +126,9 @@
                                                 <div class="text-center pt-1 mb-2 pb-1">
                                                     <button id="btn-acceso" class="btn btn-success btn-block mb-3"
                                                         type="submit">Acceso</button>
-                                                    <a class="text-white" href="/restablecerContrasena.html">Olvidaste tu contraseña?</a>
+                                                    <a class="text-white" href="/validarDocumento.html">Olvidaste
+                                                        tu contraseña?</a>
                                                 </div>
-
                                                 <div class="d-flex align-items-center justify-content-center pb-4">
                                                     <p class="mb-0 me-2">No tienes una cuenta?</p>
 
@@ -136,19 +140,46 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 align-items-center gradient-custom-2">
+                                    <div class="col-lg-7 align-items-center gradient-custom-2">
                                         <div class="text-center mt-4">
                                             <img src="https://munisayan.gob.pe/Rentas/Recursos/logo1.png"
                                                 style="height: 100px;" alt="logo">
                                         </div>
-                                        <div class=" px-3 py-4 p-md-5 mx-md-4">
+                                        <div class=" mx-md-4">
                                             <h4 class="mb-4">Trabajando para un prospero futuro</h4>
-                                            <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                veniam, quis nostrud
-                                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                            <p style="text-align: justify;" class="small">Comprometidos con el progreso
+                                                y el bienestar
+                                                de nuestro distrito. Promoviendo las buenas costumbres
+                                                y los valores que nos unen como sociedad, trabajando día a día para
+                                                crear un entorno seguro, inclusivo y lleno de oportunidades para todos
+                                                nuestros ciudadanos.
                                             </p>
+                                            <p class="small">
+                                                <strong>Municipalidad de Distrital de Sayán</strong> – Juntos
+                                                Construimos el Futuro
+                                            </p>
+                                            <div class="d-flex p-3"
+                                                style="background-color: rgba(255, 221, 0, 0.52); border-radius: 10px;">
+                                                <div style="border-radius: 10px; width: 140px; margin-right: 10px;">
+                                                    <img style="height: 100%; width: 100%; border-radius: 3px;"
+                                                        src="/assets/images/logo_OTIGD.jpg"
+                                                        alt="Oficina de Tecnología de la Información y Gobierno Digital">
+                                                </div>
+                                                <div class="text-black small" style="text-align: justify;">
+                                                    <div>Contactar con la Oficina de Tecnología de la Información y
+                                                        Gobierno Digital:</div>
+                                                    <strong>
+                                                        helpdesk@munisayan.gob.pe
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 aling-middle"
+                                        style="margin: auto; text-align: center; height: 30px;">
+                                        <div style="font-size: 10px; width: 100%;height: 20px; background-color: #333; border-radius: 0px 0px 8px 8px; margin-top: 10px;">
+                                            <p><strong>Municipalidad Distrital de Sayán</strong> - CAL. PLAZA DE ARMAS
+                                                SUR MZA. 17 LOTE. 1 LIMA HUAURA SAYAN</p>
                                         </div>
                                     </div>
                                 </div>
@@ -166,12 +197,13 @@
         </div>
     </dialog>
     <!--------------- Errores ---------------->
-    <dialog class="p-md-3" id="modal-error" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        style="background-color: #f12626ec; border: none; border-radius: 10px; width: 70%;">
-        <div class="" role="document">
+    <dialog class="justify-contentwwa-center p-0" id="modal-error" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" style="border: none; border-radius: 10px; width: 70%; background-color: #33333300;">
+        <div class="col-xl-7 p-3" style="background-color: #f12626ec; border: none; border-radius: 10px;margin: auto;">
             <div class="modal-content text-white">
                 <div class="modal-header d-flex">
-                    <h5 class="modal-title" id="exampleModalLabel">Se encontraron excepciones</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Se encontraron excepciones
+                    </h5>
                     <button type="button" id="btn-cerrar-modal-error" class="btn btn-primary ms-auto"
                         data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -183,7 +215,6 @@
             </div>
         </div>
     </dialog>
-
 
     <script src="/assets/js/user/auth.js"></script>
 </body>

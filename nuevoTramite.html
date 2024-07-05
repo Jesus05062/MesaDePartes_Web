@@ -8,12 +8,8 @@
     <title>Tramite Documentario</title>
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
-
     <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="assets/css/estilos.css">
-    <!-- <link rel="stylesheet" href="assets/css/estilos_nuevoTramite.css"> -->
-
     <script src="https://kit.fontawesome.com/017fac5817.js" crossorigin="anonymous"></script>
 </head>
 
@@ -29,15 +25,25 @@
             background: none;
             text-align: center;
         }
+
+        .mensaje-style {
+            background-color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            position: flex;
+            margin: auto;
+            max-width: 700px;
+            padding: 10px;
+        }
     </style>
 
     <header>
         <div class="icon__menu">
-            <img src="/assets/images/hamburguesa.png" id="btn_open">
+            <img src="/assets/images/hamburguesa.png" alt="Menu Icon" id="btn_open">
             <!-- <i class="fas fa-bars" id="btn_open"></i> -->
         </div>
-        <div class="icon__user">
-            <img src="assets/images/perfil64px.png" alt="">
+        <div id="id_icon_user" class="icon__user empuje__icon">
+            <img src="assets/images/perfil64px.png" alt="User Icon" id="btn_open_perfil">
         </div>
     </header>
 
@@ -45,7 +51,7 @@
 
         <div class="name__page">
             <i class="fas fa-brasas" title="Mis Documentos"></i>
-            <p style="font-size: 18px;">Tramite Documentario</p>
+            <p id="name_title" style="font-size: 18px;">Tramite Documentario</p>
         </div>
 
         <div class="options__menu">
@@ -60,27 +66,20 @@
     </div>
 
     <main>
-        <div class="body__container">
+        <div id="body__container" class="body__container">
             <div class="subtitle">
-                <h2>Nuevo Documento</h2><br>
+                <h2>Registrando Nuevo Documento</h2><br>
             </div>
             <hr>
             <div class="container__body">
                 <form class="row mt-3 g-3 needs-validation" method="post" action="" autocomplete="off" novalidate>
-                    <div class="row d-flex justify-content-center mt-4 mb-3">
+                    <!-- <div class="row d-flex justify-content-center mt-4 mb-3">
                         <div class="col-sm-8 col-md-3">
                             <label for="id_modoEmision" class="form-label"><b>Modo de Emision</b><span
                                     class="text-danger small">*</span> :</label>
                             <button id="btn-abrir-modal" type="button"
                                 class="btn btn-outline-info rounded-circle btn-rounded btn-sm ml-1 px-1 py-0" aria-haspopup="dialog" aria-controls="modal"><i
                                     class="fas fa-question"></i></button>
-                            <!-- <div class="btn-group bootstrap-selected form-control">
-                                <select name="modo" class="form-control selectpicker" data-style="btn btn-outline-primary" required id="id_modo" tabindex="-98">
-                                    <option value selected>---------</option>
-                                    <option value="P">Personal</option>
-                                    <option value="I">Institucional</option>slot
-                                </select>
-                            </div> -->
                             <dialog id="modal" class="col-12 p-3">
                                 <h2>Modo de Emision</h2>
                                 <hr>
@@ -112,7 +111,7 @@
                             <div class="invalid-feedback">
                                 Es necesario
                             </div>
-                        </div>
+                        </div> 
                         <div class="col-sm-8 col-md-3" id="id_rucField" style="display: none;">
                             <label for="id_ruc" class="form-label"><b>RUC</b><span class="text-danger small">*</span>
                                 :</label>
@@ -120,31 +119,13 @@
                                 placeholder="Número de Documento" id="id_ruc"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                         </div>
-                    </div>
-
+                    </div>-->
                     <div class="row d-flex justify-content-center mb-3">
                         <div class="col-sm-8 col-md-3">
                             <label for="id_tipoDocumento" class="form-label"><b>Tipo de Documento</b><span
                                     class="text-danger small">*</span> :</label>
                             <select class="form-select selectpicker" name="" id="id_tipoDocumento" required>
                                 <option value="">Seleccione...</option>
-                                <option value="Acta">Acta</option>
-                                <option value="Adenda">Adenda</option>
-                                <option value="Carta">Carta</option>
-                                <option value="Carta Multiple">Carta Multiple</option>
-                                <option value="Carta Notarial">Carta Notarial</option>
-                                <option value="Cédula de Notificación">Cédula de Notificación</option>
-                                <option value="Declaración Jurada">Declaración Jurada</option>
-                                <option value="Expediente">Expediente</option>
-                                <option value="Expediente Judicial">Expediente Judicial</option>
-                                <option value="Informe">Informe</option>
-                                <option value="Memorando">Memorando</option>
-                                <option value="Memorando Multiple">Memorando Múltiple</option>
-                                <option value="Oficio">Oficio</option>
-                                <option value="Oficio Multiple">Oficio Múltiple</option>
-                                <option value="Proveido">Proveido</option>
-                                <option value="Recurso de Aplicacion">Recurso de Apelación</option>
-                                <option value="Requerimiento">Requerimiento</option>
                             </select>
                             <div class="valid-feedback">
                                 OK
@@ -156,8 +137,8 @@
                         <div class="col-sm-4 col-md-2">
                             <label for="id_documento" class="form-label"><b>Documento</b><span
                                     class="text-danger small">*</span> :</label>
-                            <input type="text" class="form-control " value="" min="0" max="10000" step="1"
-                                id="id_documento" placeholder="0" required>
+                            <input type="text" class="form-control" maxlength="50" id="id_documento" placeholder="0"
+                                required>
                             <div class="valid-feedback">
                                 OK
                             </div>
@@ -168,11 +149,12 @@
                         <div class="col-sm-4 col-md-3">
                             <label for="id_folios" class="form-label"><b>N° Folios</b> <span
                                     class="text-danger small">*</span> :</label>
-                            <input type="text" class="form-control " id="id_folios"
+                            <input type="text" class="form-control " id="id_folios" maxlength="5"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                         </div>
-                        <div class="col-8 col-sm-4 col-md-2">
-                            <label for="id_fecha" class="form-label"><b>Fecha</b><span class="text-danger small">*</span>
+                        <div class="col-sm-4 col-md-3">
+                            <label for="id_fecha" class="form-label"><b>Fecha</b><span
+                                    class="text-danger small">*</span>
                                 :</label>
                             <input type="date" class="form-control " id="id_fecha" required>
                             <div class="valid-feedback">
@@ -186,13 +168,13 @@
                     <div class="col-sm-4 col-md-3">
                         <label for="id_dniFirmante" class="form-label">Dni del Firmante :</label>
                         <input type="text" class="form-control " id="id_dniFirmante"
-                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,8)">
                     </div>
                     <div class="col-sm-8 col-md-5">
                         <label for="id_nombreFirmante" class="form-label"><b>Nombre del Firmante</b><span
                                 class="text-danger small">*</span> :</label>
                         <input type="text" class="form-control " name="" id="id_nombreFirmante"
-                            oninput="this.value = this.value.replace(/[^a-z,^A-Z]/g, '')" required>
+                            oninput="this.value = this.value.replace(/[^a-z,^A-Z, ]/g, '')" required>
                         <div class="valid-feedback">
                             OK
                         </div>
@@ -220,33 +202,11 @@
                                     para efectos de notificación.
                                 </div>
                             </div>
-                            <!-- <div class="col-sm-4">
-                                <label for="id_departamenmto" class="form-label"><b>Departamento<span
-                                            class="text-danger small">*</span></b></label>
-                                <select class="form-select" style="width: 100%;" name="" id="id_departamenmto" required>
-                                    <option value="15">LIMA</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="id_provincia" class="form-label"><b>Provincia<span
-                                            class="text-danger small">*</span> :</b></label>
-                                <select name="" id="id_provincia" class="form-select" required>
-                                    <option value="15">Huaura</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="id_distrito" class="form-label"><b>Distrito<span
-                                            class="text-danger small">*</span> :</b></label>
-                                <select name="" id="id_distrito" class="form-select">
-                                    <option value="">Sayan</option>
-                                </select>
-                            </div> -->
                             <div class="col-md-4 pt-2 pt-md-1">
                                 <label for="id_departamento" class="form-label"><b>Departamento<span
                                             class="text-danger small">*</span></b></label>
-                                <select name="departamento" class="form-control selectpicker"
-                                    data-minimum-results-for-search="-1" style="width: 100%"
-                                    data-minimum-input-length="0" placeholder="Departamento" id="id_departamento">
+                                <select name="departamento" class="form-control selectpicker" style="width: 100%"
+                                    placeholder="Departamento" id="id_departamento">
                                 </select>
                             </div>
                             <div class="col-md-4 pt-2 pt-md-1">
@@ -322,12 +282,12 @@
                         <div class="valid-feedback">
                             Selecciona el/los destino(s)
                         </div> -->
-                        <div class="col-md-6 mt-2">
+                        <!-- <div class="col-md-6 mt-2">
                             <label for="id_dirigidoa" class="form-label"><b>Dirigido a<span
                                         class="text-danger small">*</span> :</b></label>
                             <input type="text" name="dirigidoa" required id="id_dirigidoa" class="form-control"
                                 wfd-id="id13">
-                        </div>
+                        </div> -->
                         <div class="col-md-6 mt-2">
                             <label for="id_archivocorto" class="form-label"><b>Archivo (PDF máx 5 MB)<span
                                         class="text-danger small">*</span> :</b></label>
@@ -352,7 +312,7 @@
                                     Las URLs permitidas de las páginas donde se pueden almacenar los archivos, deberán
                                     cumplir el siguiente formato:
                                 </div>
-                                <div class="row d-flex justify-content-center justify-content-cente">
+                                <div class="row d-flex justify-content-center">
                                     <div style="width: 180px; padding: 10px;">
                                         <img src="/assets/images/GOOGLE_DRIVE.jpg" alt="" style="width: 100%;">
                                     </div>
@@ -365,10 +325,9 @@
                                 </div>
                                 <div class="text-center">
                                     <button id="btn-cerrar-info-anexo" class="btn btn-outline-secondary m-3">
-                                        Cerra</button>
+                                        Cerrar</button>
                                 </div>
                             </dialog>
-
                             <input id="id_anexo" type="text" class="form-control" style="height: 50px;">
                         </div>
                         <div class="col-12 mt-4 mb-4">
@@ -377,7 +336,7 @@
                     </div>
                 </form>
                 <!--------------------------- Info --------------------------->
-                <dialog class="" id="modal-message-alert" aria-labelledby="exampleModalLabel" aria-hidden="true"
+                <dialog class="" id="modal-message-alert"
                     style="background-color: #ffffff; border: none; border-radius: 10px; position: fixed; margin: auto; max-width: 900px; padding: 20px;">
                     <div class="" role="document">
                         <div class="modal-content">
@@ -387,8 +346,8 @@
                             <div class="modal-body text-justify small" style="text-align: justify; font-size: 12px;">
                                 Estimado(a) Usuario(a) se le comunica que los escritos ingresados por trámite digital
                                 serán recepcionados en el horario establecido en la Directiva N° 2-2022-GR.CAJ/DRTD
-                                numeral 7.2, literal f), que norma la Implementación y Funcionamiento del Sistema de
-                                Gestión Documental: "MAD3 – CERO PAPEL" Y MESA DE PARTES DIGITAL: "TRÁMITE DIGITAL":
+                                numeral 7.2, literal f), que norma la Implementación y Funcionamiento la MESA DE PARTES
+                                DIGITAL: "TRÁMITE DIGITAL":
                                 <br>
                                 <div class="m-auto px-3 py-1 mt-1"
                                     style="font-style: italic; border-radius: 4px; width: 98%; font-size: 12px; background-color: rgba(184, 176, 176, 0.731); border: 1px solid rgb(129, 123, 123);">
@@ -448,11 +407,148 @@
                         </div>
                     </div>
                 </dialog>
+            </div>
+        </div>
+    </main>
 
+    <!--------------- Perfil Usuario---------------->
+    <div id="id_perfil" class="perfil_usuario" style="box-shadow: -3px 0px 3px 0px rgba(0.1, 0.1, 0.1, 0.1);">
+        <div style="width: 90%; margin: auto;">
+            <div class="option__perfil text-center">
+                <img src="" alt="">
+            </div>
+            <div class="header_perfil">
+                <strong id="id_documento_Field"></strong>
+            </div>
+            <div class="header_perfil">
+                <strong id="id_nombre_Field" class="text-primary"></strong>
+            </div>
+            <hr>
+            <div id="id_editarPerfil" class="option__perfil option__perfil_hover">
+                <div class="icono__content">
+                    <img src="/assets/images/gente.png" alt="">
+                </div>
+                &nbsp;
+                <h6>Perfil</h6>
+            </div>
+            <hr>
+            <div id="btn_cerrar_sesion" class="option__perfil option__perfil_hover">
+                <div class="icono__content">
+                    <img src="/assets/images/Log-off.png" alt="">
+                </div>
+                &nbsp;
+                <h6>Cerrar Sesion</h6>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------- Editar Datos --------------------------->
+    <dialog class="" id="modal-perfil-datos"
+        style="background-color: #ffffff; border: none; border-radius: 10px; position: fixed; margin: auto; max-width: 900px; padding: 20px;">
+        <div class="" role="document">
+            <div class="">
+                Actualizar Datos Principales
+                <hr>
+                <fieldset class="data-user p-3">
+                    <div class="row d-flex justify-content-center ">
+
+                        <div class="col-md-4 pt-2 pt-md-1">
+                            <label for="id_departamento_Field" class="form-label"><b>Departamento<span
+                                        class="text-danger small">*</span></b></label>
+                            <select name="departamento" class="form-control selectpicker"
+                                data-minimum-results-for-search="-1" style="width: 100%" data-minimum-input-length="0"
+                                placeholder="Departamento" id="id_departamento_Field">
+                            </select>
+                        </div>
+                        <div class="col-md-4 pt-2 pt-md-1">
+                            <label for="id_provincia_Field" class="form-label"><b>Provincia<span
+                                        class="text-danger small">*</span> :</b></label>
+                            <select name="provincia" class="form-control selectpicker"
+                                data-minimum-results-for-search="-1" style="width: 100%" data-minimum-input-length="0"
+                                placeholder="Provincia" id="id_provincia_Field">
+                            </select>
+                        </div>
+                        <div class="col-md-4 pt-2 pt-md-1">
+                            <label for="id_distrito_Field" class="form-label"><b>Distrito<span
+                                        class="text-danger small">*</span> :</b></label>
+                            <select name="distrito" class="form-control selectpicker"
+                                data-minimum-results-for-search="-1" style="width: 100%" data-minimum-input-length="0"
+                                placeholder="Distrito" id="id_distrito_Field">
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="id_direccion_Field" class="form-label"><b>Dirección<span
+                                        class="text-danger small">*</span> :</b></label>
+                            <input type="text" id="id_direccion_Field" class="form-control" required>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="id_telefono_Field" class="form-label"><b>Telefono<span
+                                        class="text-danger small">*</span> :</b></label>
+                            <input type="text" name="" id="id_telefono_Field" class="form-control"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9)" required>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="id_email_Field" class="form-label"><b>Correo<span
+                                        class="text-danger small">*</span> :</b></label>
+                            <input type="email" name="email" maxlength="254" class="form-control"
+                                placeholder="Ejemplo@gmail.com" required id="id_email_Field">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="text-center pt-2">
+                    <button id="btn-cerrar-perfil-datos" class="btn btn-primary">
+                        Actualizar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+    <!-- -------------------- MESSAGE SUCCESS ----------------------------------- -->
+    <div id="modal-message-success" class="col-12 p-3 mensaje-style" aria-hidden="true" style="display: none;">
+        <div class="modal-header text-center d-flex justify-content-center">
+            <img src="/assets/images/lista-de-verificacion.png" alt="" style="display: block; margin: 0 auto;">
+        </div>
+        <hr>
+        <div class="text-center">
+            <div class="text-primary">Solicitud N°<strong id="id_correlativoWeb" class="text-danger"></strong>
+                Registrada Correctamente</div>
+            <div>
+                Estimado(a): <b class="text-secondary" id="id_nombres_success"></b>
+            </div>
+            <script>
+                (() => {
+                    'use strict'
+
+                    const id_nombres_success = document.getElementById("id_nombres_success");
+
+                    const nombres = localStorage.getItem("Nombres");
+
+                    id_nombres_success.innerHTML = nombres;
+                })()
+            </script>
+            <br>
+            <div>
+                Su solicitud está siendo procesada. Una vez aceptada se generará el número de expediente.
+                Esté pendiente de su bandeja <strong>Mis Tramites</strong> para saber el estado del documento.
+            </div>
+            <br>
+        </div>
+        <div class="d-flex justify-content-center" style="display: flex;">
+            <div class="text-center m-3">
+                <button type="button" id="btn-cerrar-info-anexo" class="btn btn-primary">
+                    <a href="/misTramites.html" style="text-decoration: none; color: white;">Ir a Mis Tramites</a>
+                </button>
+            </div>
+            <div class="text-center m-3">
+                <button id="btn-cerrar-info-anexo" class="btn btn-secondary">
+                    <a href="/nuevoTramite.html" style="text-decoration: none; color: white;">Registrar otro
+                        Documento</a>
+                </button>
             </div>
         </div>
 
-    </main>
+    </div>
     <!--------------- Cargando ---------------->
     <dialog id="loading" class="modal-dialog">
         <div>
@@ -461,12 +557,14 @@
     </dialog>
 
     <!---------------  Errores ---------------->
-    <dialog class="" id="modal-error" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        style="background-color: #f12626ec; border: none; border-radius: 10px; width: 70%;">
-        <div class="" role="document">
+    <dialog class="justify-content-center p-0" id="modal-error" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+        style="border: none; border-radius: 10px; width: 70%; background-color: #33333300; margin: auto;">
+        <div class="col-xl-7 p-3" style="background-color: #f12626ec; border: none; border-radius: 10px;margin: auto;">
             <div class="modal-content text-white">
                 <div class="modal-header d-flex">
-                    <h5 class="modal-title" id="exampleModalLabel">Se encontraron excepciones</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Se encontraron excepciones
+                    </h5>
                     <button type="button" id="btn-cerrar-modal-error" class="btn btn-primary ms-auto"
                         data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -479,26 +577,29 @@
         </div>
     </dialog>
     <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (() => {
-            'use strict'
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (() => {
+                'use strict'
 
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                const forms = document.querySelectorAll('.needs-validation')
 
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
+                // Loop over them and prevent submission
+                Array.from(forms).forEach(form => {
+                    form.addEventListener('submit', event => {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
 
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+            })()
     </script>
+
+    <script src="/assets/js/user/validar_sesion.js"></script>
+
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
     <!-- <script>
         new MultiSelectTag('id_dependencias')  // id
@@ -506,7 +607,7 @@
     <script src="assets/js/script_menu.js"></script>
     <script src="assets/js/func_nuevo_tramite.js"></script>
     <!-- <script src="/assets/js/tramite/nuevo_tramite.js"></script> -->
-    <script src="/assets/js/borrador.js"></script>
+    <script src="/assets/js/tramite/nuevo_Tramite.js"></script>
 </body>
 
 </html>

@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btnCerrarModal.addEventListener("click", () => {
         modal.close();
+        divErrores.innerHTML = "";
     });
     /* ---------------Formulario--------------- */
     form.addEventListener("submit", async (event) => {
@@ -45,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }).then(res => {
             loadingDiv.close();
 
-            divErrores.innerHTML = "";
             if (res.status === 200) {
                 return res.json().then(respuesta => {
                     if (respuesta.usuario.Nombres) {
@@ -54,10 +54,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (respuesta.usuario.razonsociaal) {
                         localStorage.setItem("rasonzocial", respuesta.usuario.razonsocial);
                     }
+                    localStorage.setItem("id", respuesta.usuario.id)
                     localStorage.setItem("documento", respuesta.usuario.documento);
+                    localStorage.setItem("departamento", respuesta.usuario.departamento);
+                    localStorage.setItem("provincia", respuesta.usuario.provincia);
+                    localStorage.setItem("distrito", respuesta.usuario.distrito);
+                    localStorage.setItem("direccion", respuesta.usuario.direccion);
                     localStorage.setItem("email", respuesta.usuario.email);
+                    localStorage.setItem("celular", respuesta.usuario.celular);
+                    localStorage.setItem("Tok", "true");
                     window.location.href = 'misTramites.html';
-
                 });
             } else if (res.status === 400) {
                 return res.json().then(respuesta => {
@@ -72,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }).catch(error => {
             loadingDiv.close();
-            divErrores.innerHTML = "";
             createErrors(`Problemas en el sitio web, Sea paciente.\n Descripcion del error: ${error}`);
             modal.showModal();
             console.error(error);
@@ -80,3 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 })
+
+/* window.addEventListener('beforeunload', function() {
+    localStorage.clear();
+}); */

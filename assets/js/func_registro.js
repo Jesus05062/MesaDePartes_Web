@@ -1,6 +1,16 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    /* ---------------Funcionalidad del modal Informativo --------------- */
+    const btnCerrarModalAlerta = document.querySelector("#btn-cerrar-message-alert");
+    const modalAlerta = document.querySelector("#modal-message-alert");
+
+    modalAlerta.showModal();
+    btnCerrarModalAlerta.addEventListener("click", () => {
+        modalAlerta.close();
+    });
+
+
     /* ---------------Funcionalidad de los Inputs--------------- */
     const documentotipoSelect = document.querySelector('select[name="TipoDocumento"]');
 

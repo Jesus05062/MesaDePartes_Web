@@ -75,7 +75,7 @@
             <section class="h-100 gradient-form">
                 <div class="container h-100">
                     <div class="row d-flex justify-content-center align-items-center h-100 my-3">
-                        <div class="col-xl-10">
+                        <div class="col-xl-7">
                             <div class="card rounded-3 text-black text-white" id="content__form">
                                 <div class="row g-0">
 
@@ -98,10 +98,11 @@
                                                 </script>
                                                 <div
                                                     class="form-outline mb-4 text-center d-flex flex-column align-items-center">
-
+                                                    <!-- Temporizador -->
+                                                    <div id="timer" class="mb-2"></div>
                                                     <label class="form-label text-white" for="id_codigo">Codigo de
                                                         verificación:</label>
-                                                    <input style="width: 30%;" name="codigo" type="text" id="id_codigo"
+                                                    <input style="width: 40%;" name="codigo" type="text" id="id_codigo"
                                                         class="form-control" placeholder=""
                                                         oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase()"
                                                         required />
@@ -123,6 +124,12 @@
                                                         class="form-control" placeholder="Nueva Contraseña" required />
                                                 </div>
                                                 <div class="col-sm-12 text-white mb-2">
+                                                    <div>
+                                                        <small>
+                                                            <span>*</span> Su contraseña debe contener, al menos un
+                                                            símbolo ($@$!%*#?&).
+                                                        </small>
+                                                    </div>
                                                     <div>
                                                         <small>
                                                             <span>*</span> Su contraseña no puede asemejarse tanto a su
@@ -149,6 +156,7 @@
                                                             numérica.
                                                         </small>
                                                     </div>
+
                                                 </div>
                                                 <div class="form-outline mb-2">
                                                     <input name="confirmPassword" type="password"
@@ -156,18 +164,6 @@
                                                         placeholder="Confirmar Nueva Contraseña" required />
                                                     <i class="toggle-password text-black fas fa-eye-slash"></i>
                                                 </div>
-                                                <script>
-                                                    window.addEventListener('beforeunload', function (e) {
-                                                        // Cancela el evento de cierre por defecto
-                                                        e.preventDefault();
-                                                        // Mensaje que se mostrará en el alert
-                                                        var confirmationMessage = '¿Seguro que deseas abandonar la página?';
-                                                        // Se asigna el mensaje al evento
-                                                        e.returnValue = confirmationMessage;
-                                                        // Retorna el mensaje, aunque la mayoría de los navegadores lo ignorarán
-                                                        return confirmationMessage;
-                                                    });
-                                                </script>
                                                 <script>
                                                     // JavaScript para alternar la visibilidad de la contraseña
                                                     const togglePassword = document.querySelector('.toggle-password');
@@ -184,9 +180,7 @@
                                                     <button id="btn-acceso" class="btn btn-success btn-block mb-3"
                                                         type="submit">Restablecer Contraseña</button>
                                                 </div>
-
                                             </form>
-
                                         </div>
                                     </div>
 
@@ -207,19 +201,20 @@
     </dialog>
 
     <!---------------  Errores ---------------->
-    <dialog class="" id="modal-error" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        style="background-color: #f12626ec; border: none; border-radius: 10px; width: 70%;">
-        <div class="" role="document">
+    <dialog class="justify-contentwwa-center p-0" id="modal-error" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" style="border: none; border-radius: 10px; width: 70%;background-color: #33333300;">
+        <div class="col-xl-7 p-3" style="background-color: #f12626ec; border: none; border-radius: 10px;margin: auto;">
             <div class="modal-content text-white">
                 <div class="modal-header d-flex">
-                    <h5 class="modal-title" id="exampleModalLabel">Se encontraron excepciones</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Se encontraron excepciones
+                    </h5>
                     <button type="button" id="btn-cerrar-modal-error" class="btn btn-primary ms-auto"
                         data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <hr>
-                <div class="modal-body text-justaify small" id="div-msg-error">
+                <div class="modal-body text-justify small" id="div-msg-error">
                 </div>
             </div>
         </div>

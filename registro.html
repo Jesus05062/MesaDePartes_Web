@@ -72,7 +72,7 @@
                 <a>
                     <img alt="logo TD" src="assets/images/image.png" class="theme-logo">
                 </a>
-                <h4>Tramite Documentario</h4>
+                <h4 id="name_title">Tramite Documentario</h4>
             </div>
             <!-- -------------Formulario---------- -->
             <div class="row justify-content-center" id="content__form">
@@ -155,8 +155,8 @@
                                 Acepto los términos y condiciones
                             </label>
                         </div>
-                        <div class="col-md-6 text-right text-center text-white py-2">
-                            <button class="btn btn-secondary" type="button" id="btn-abrir-modal">
+                        <div class="col-md-6 text-right text-center text-white py-2" >
+                            <button class="btn btn-secondary" type="button" id="btn-abrir-modal" >
                                 Ver Terminos y Condiciones
                             </button>
                         </div>
@@ -175,7 +175,7 @@
                 <div class="" role="document">
                     <div class="modal-content">
                         <div class="modal-header d-flex">
-                            <h5 class="modal-title" id="exampleModalLabel">Términos y Condiciones</h5>
+                            <h5 class="modal-title" id="exampleModalLabel"><strong>Términos y Condiciones</strong></h5>
                             <button type="button" id="btn-cerrar-modal" class="btn btn-danger ms-auto"
                                 data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -203,7 +203,7 @@
                             <br>
                             <br>
                             Con la aceptación de los TERMINOS Y CONDICIONES, autorizo expresamente al Gobierno
-                            Regional Cajamarca,
+                            Distrital de Sayán,
                             para que notifique vía el correo electrónico señalado en este formulario,
                             la respuesta, observaciones, requerimientos de información, denegación u otros actos
                             emitidos
@@ -217,9 +217,6 @@
                     </div>
                 </div>
             </dialog>
-
-
-
             <br>
             <footer id="footer" class="footer text-center" th:fragment="footer">
                 <div class="copyright">
@@ -239,12 +236,13 @@
     </dialog>
 
     <!---------------  Errores ---------------->
-    <dialog class="" id="modal-error" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        style="background-color: #f12626ec; border: none; border-radius: 10px; width: 70%;">
-        <div class="" role="document">
+    <dialog class="justify-contentwwa-center p-0" id="modal-error" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" style="border: none; border-radius: 10px; width: 70%; background-color: #33333300;">
+        <div class="col-xl-7 p-3" style="background-color: #f12626ec; border: none; border-radius: 10px;margin: auto;">
             <div class="modal-content text-white">
                 <div class="modal-header d-flex">
-                    <h5 class="modal-title" id="exampleModalLabel">Se encontraron excepciones</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Se encontraron excepciones
+                    </h5>
                     <button type="button" id="btn-cerrar-modal-error" class="btn btn-primary ms-auto"
                         data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -256,7 +254,7 @@
             </div>
         </div>
     </dialog>
-
+    
     <!-- -------------------Success Message----------------- -->
     <div class="container vertical-center" id="successMsg" style="display: none;">
         <div class="">
@@ -311,6 +309,34 @@
         </div>
 
     </div>
+
+    <!--------------------------- Info --------------------------->
+    <dialog class="" id="modal-message-alert"
+        style="background-color: #dbdd6e; border: none; border-radius: 10px; position: fixed; margin: auto; max-width: 900px; padding: 20px; box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.534);">
+        <div class="" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center d-flex justify-content-center">
+                    <h2 class="text-success" style="font-weight: bold;">Antes de registrarte</h2>
+                </div>
+                <hr>
+                <div class="modal-body text-justify small" style="text-align: justify; font-size: 14px;">
+                    Por favor, recuerde utilizar sus datos verídicos al registrarse en el sistema. Es importante que los
+                    datos proporcionados coincidan con aquellos utilizados para registrar documentos en la mesa de
+                    partes. Esto garantizará la correcta gestión y seguimiento de sus expedientes. De acuerdo con la Ley
+                    de Protección de Datos Personales N° 29733 del Perú, es obligatorio proporcionar información exacta
+                    y actualizada para asegurar la integridad y confiabilidad de los datos gestionados en el sistema.
+                    </div>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <button id="btn-cerrar-message-alert" class="btn btn-success">
+                        Entendido
+                    </button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
 
 
     <script src="/assets/js/func_registro.js"></script>

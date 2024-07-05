@@ -1,7 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    const insertarValorPredeterminado = (idCampo, valor) => {
+        const a = localStorage.getItem(valor);
+        if (a) {
+            document.getElementById(idCampo).value = a;
+        }
+    }
+
+    insertarValorPredeterminado("id_dniFirmante", "documento");
+    insertarValorPredeterminado("id_nombreFirmante", "Nombres");
+    insertarValorPredeterminado("id_direccion", "direccion");
+    insertarValorPredeterminado("id_telefono", "celular");
+    insertarValorPredeterminado("id_email", "email");
+    insertarValorPredeterminado("id_dniFirmante", "documento");
+    insertarValorPredeterminado("id_dniFirmante", "documento");
+
+    /* ---------------Funcionalidad del modal Informativo --------------- */
+    const btnCerrarModalAlerta = document.querySelector("#btn-cerrar-message-alert");
+    const modalAlerta = document.querySelector("#modal-message-alert");
+
+    modalAlerta.showModal();
+    btnCerrarModalAlerta.addEventListener("click", () => {
+        modalAlerta.close();
+    });
+
     /* ---------------Funcionalidad del modal Modo de Emision--------------- */
-    const btnAbrirModalEmision = document.querySelector("#btn-abrir-modal");
+    /* const btnAbrirModalEmision = document.querySelector("#btn-abrir-modal");
     const btnCerrarModalEmision = document.querySelector("#btn-cerrar-modal");
     const modalEmision = document.querySelector("#modal");
 
@@ -10,17 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     btnCerrarModalEmision.addEventListener("click", () => {
         modalEmision.close();
-    });
-
-    /* ---------------Funcionalidad del modal Alerta--------------- */
-    const btnCerrarModalAlerta = document.querySelector("#btn-cerrar-message-alert");
-    const modalAlerta = document.querySelector("#modal-message-alert");
-
-    modalAlerta.scrollTop = 0;
-    modalAlerta.showModal();
-    btnCerrarModalAlerta.addEventListener("click", () => {
-        modalAlerta.close();
-    });
+    }); */
 
     /* ---------------Funcionalidad del modal info de Anexo--------------- */
     const btnAbrirModalAnexo = document.querySelector("#btn-abrir-info-anexo");
@@ -36,7 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })
 
-const tipoEmision = document.querySelector('select[name="tipoEmision"]');
+/* ---------------Funcionalidad Tipo de Emision--------------- */
+/* const tipoEmision = document.querySelector('select[name="tipoEmision"]');
 
 tipoEmision.addEventListener("change", function () {
     const selectedValue = this.value;
@@ -51,7 +66,7 @@ tipoEmision.addEventListener("change", function () {
         rucField.style.display = "none";
         inputRuc.removeAttribute("required");
     }
-})
+}) */
 
 /* ---------------------CARGAR DATOS--------------------- */
 
@@ -66,6 +81,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         c.append(option);
     };
 
+    const createOptionTipoExpediente = (e, c, nc) => {
+        const option = document.createElement("option");
+        //option.classList.add(nc);
+        option.setAttribute("id", nc);
+        option.value = e.Descripcion;
+        option.textContent = e.Descripcion;
+        c.append(option);
+    };
+
+    const createSeleccione = (c) => {
+        const option = document.createElement("option");
+        option.value = "";
+        option.textContent = "Seleccione...";
+        c.append(option);
+    }
+
     /* ---------------------CARGAR DEPARTAMENTOS--------------------- */
     const urlDepartamento = "http://munisayan.gob.pe/tramite/api/departamento";
     const departamentoSelect = document.getElementById("id_departamento");
@@ -79,8 +110,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         .then(response => response.json())
         .then(data => {
 
-            data.dpto.forEach(departamento => createOption(departamento, departamentoSelect, "departamento"));
+            createSeleccione(departamentoSelect);
 
+            data.dpto.forEach(departamento => createOption(departamento, departamentoSelect, "departamento"));
+            // Establecer el valor del departamento desde localStorage
+            /* const storedDepartamento = localStorage.getItem("departamento");
+            if (storedDepartamento) {
+                // Encontrar la opción que coincide con el valor almacenado en localStorage
+                for (let i = 0; i < departamentoSelect.options.length; i++) {
+                    if (departamentoSelect.options[i].text === storedDepartamento) {
+                        departamentoSelect.selectedIndex = i;
+                        departamentoSelect.dispatchEvent(new Event('change'));
+                        break;
+                    }
+                }
+            } */
         })
         .catch(error => {
             console.error("Error al obtener la lista de departamentos:", error);
@@ -91,8 +135,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const provinciaSelect = document.getElementById("id_provincia");
 
     departamentoSelect.addEventListener("change", async () => {
+        provinciaSelect.innerHTML = "";
+        distritoSelect.innerHTML = "";
+        createSeleccione(provinciaSelect);
         const selectDepartamentoId = departamentoSelect.value;
-
         const urlProvincia = `http://munisayan.gob.pe/tramite/api/provincia/${selectDepartamentoId}`;
 
         await fetch(urlProvincia, {
@@ -103,14 +149,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         })
             .then(response => response.json())
             .then(data => {
-                provinciaSelect.innerHTML = "";
-                distritoSelect.innerHTML = "";
-                /* const seleccionar = document.createElement("option");
-                seleccionar.value = null;
-                seleccionar.textContent = "Seleccionar...";
-                provinciaSelect.append(seleccionar); */
+
 
                 data.forEach(provincia => createOption(provincia, provinciaSelect, "provincia"));
+
+                // Establecer el valor del departamento desde localStorage
+                const storedProvincia = localStorage.getItem("provincia");
+                if (storedProvincia) {
+                    // Encontrar la opción que coincide con el valor almacenado en localStorage
+                    for (let i = 0; i < provinciaSelect.options.length; i++) {
+                        if (provinciaSelect.options[i].text === storedProvincia) {
+                            provinciaSelect.selectedIndex = i;
+                            provinciaSelect.dispatchEvent(new Event('change'));
+                            break;
+                        }
+                    }
+                }
             })
             .catch(error => {
                 console.error("Error al obtener la lista de provincias:", error);
@@ -121,6 +175,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const distritoSelect = document.getElementById("id_distrito");
 
     provinciaSelect.addEventListener("change", async () => {
+        distritoSelect.innerHTML = "";
+
+        createSeleccione(distritoSelect);
 
         const selectProvinciaId = provinciaSelect.value;
         const urlDistrito = `http://munisayan.gob.pe/tramite/api/distrito/${selectProvinciaId}`;
@@ -133,9 +190,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         })
             .then(response => response.json())
             .then(data => {
-                distritoSelect.innerHTML = "";
 
                 data.forEach(distrito => createOption(distrito, distritoSelect, "distrito"));
+                // Establecer el valor del departamento desde localStorage
+                const storedDistrito = localStorage.getItem("distrito");
+                if (storedDistrito) {
+                    // Encontrar la opción que coincide con el valor almacenado en localStorage
+                    for (let i = 0; i < distritoSelect.options.length; i++) {
+                        if (distritoSelect.options[i].text === storedDistrito) {
+                            distritoSelect.selectedIndex = i;
+                            distritoSelect.dispatchEvent(new Event('change'));
+                            break;
+                        }
+                    }
+                }
             })
             .catch(error => {
                 console.error("Error al obtener la lista de distritos:", error);
@@ -161,5 +229,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         .catch(error => {
             console.error("Error al obtener la lista de distritos:", error);
         });
-});
 
+    /* ---------------------CARGAR TIPO DE EXPEDIENTE --------------------- */
+    const tipoExpedienteSelect = document.querySelector("#id_tipoDocumento");
+    const urlTipoExpediente = "https://munisayan.gob.pe/tramite/api/tipoexpediente";
+
+    await fetch(urlTipoExpediente, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+
+            data.tipo.forEach(tipoExpediente => createOptionTipoExpediente(tipoExpediente,tipoExpedienteSelect, "dependencia"));
+        })
+        .catch(error => {
+            console.error("Error al obtener la lista de distritos:", error);
+        });
+});
