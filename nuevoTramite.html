@@ -150,7 +150,7 @@
                             <label for="id_folios" class="form-label"><b>N° Folios</b> <span
                                     class="text-danger small">*</span> :</label>
                             <input type="text" class="form-control " id="id_folios" maxlength="5"
-                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                         </div>
                         <div class="col-sm-4 col-md-3">
                             <label for="id_fecha" class="form-label"><b>Fecha</b><span
@@ -184,8 +184,10 @@
                     </div>
                     <div class="col-md-4">
                         <label for="id_cargoFirmante" class="form-label"><b>Cargo del Firmante</b><span
-                                class="text-danger small">*</span> :</label>
-                        <input type="text" class="form-control " id="id_cargoFirmante" required>
+                                class="text-danger small">*</span> : <button id="btn-abrir-info-cargo" type="button"
+                                class="btn btn-outline-info rounded-circle btn-rounded btn-sm ml-1 px-1 py-0"><i
+                                    class="fas fa-question"></i></button></label>
+                        <input type="text" class="form-control " id="id_cargoFirmante">
                         <div class="valid-feedback">
                             OK
                         </div>
@@ -206,7 +208,7 @@
                                 <label for="id_departamento" class="form-label"><b>Departamento<span
                                             class="text-danger small">*</span></b></label>
                                 <select name="departamento" class="form-control selectpicker" style="width: 100%"
-                                    placeholder="Departamento" id="id_departamento">
+                                    placeholder="Departamento" id="id_departamento" required>
                                 </select>
                             </div>
                             <div class="col-md-4 pt-2 pt-md-1">
@@ -214,7 +216,7 @@
                                             class="text-danger small">*</span> :</b></label>
                                 <select name="provincia" class="form-control selectpicker"
                                     data-minimum-results-for-search="-1" style="width: 100%"
-                                    data-minimum-input-length="0" placeholder="Provincia" id="id_provincia">
+                                    data-minimum-input-length="0" placeholder="Provincia" id="id_provincia" required>
                                 </select>
                             </div>
                             <div class="col-md-4 pt-2 pt-md-1">
@@ -222,7 +224,7 @@
                                             class="text-danger small">*</span> :</b></label>
                                 <select name="distrito" class="form-control selectpicker"
                                     data-minimum-results-for-search="-1" style="width: 100%"
-                                    data-minimum-input-length="0" placeholder="Distrito" id="id_distrito">
+                                    data-minimum-input-length="0" placeholder="Distrito" id="id_distrito" required>
                                 </select>
                             </div>
                             <div class="col-sm-6">
@@ -295,39 +297,12 @@
                                 required>
                         </div>
                         <div class="col-md-6 mt-2">
-                            <label for="id_anexo" class="form-label"><b>URL del Anexo (leer indicaciones)</b><span
-                                    class="text-danger small">*</span> :<button id="btn-abrir-info-anexo" type="button"
+                            <label for="id_anexo" class="form-label"><b>URL del Anexo (leer indicaciones)</b>:<button
+                                    id="btn-abrir-info-anexo" type="button"
                                     class="btn btn-outline-info rounded-circle btn-rounded btn-sm ml-1 px-1 py-0"><i
                                         class="fas fa-question"></i></button></label>
 
-                            <dialog id="modal-info-anexo" class="col-12 p-3" aria-hidden="true"
-                                style="background-color: #ffffff; border: none; border-radius: 10px; position: flex; margin: auto; max-width: 700px; padding: 10px;">
-                                <p class="text-primary">Urls permitidas</p>
-                                <hr>
-                                <div class="text-center">
-                                    Si es un solo archivo, comparta la URL del mismo; pero si son varios archivos deberá
-                                    comprimirlos y luego compartir <b class="text-primary">la URL sólo del archivo
-                                        comprimido</b>, más no de toda la
-                                    carpeta. <br>
-                                    Las URLs permitidas de las páginas donde se pueden almacenar los archivos, deberán
-                                    cumplir el siguiente formato:
-                                </div>
-                                <div class="row d-flex justify-content-center">
-                                    <div style="width: 180px; padding: 10px;">
-                                        <img src="/assets/images/GOOGLE_DRIVE.jpg" alt="" style="width: 100%;">
-                                    </div>
-                                    <div style="width: 180px;padding: 10px;">
-                                        <img src="/assets/images/ONE_DRIVE.png" alt="" style="width: 100%;">
-                                    </div>
-                                    <div style="width: 180px;padding: 10px;">
-                                        <img src="/assets/images/MEGA.png" alt="" style="width: 100%;">
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <button id="btn-cerrar-info-anexo" class="btn btn-outline-secondary m-3">
-                                        Cerrar</button>
-                                </div>
-                            </dialog>
+
                             <input id="id_anexo" type="text" class="form-control" style="height: 50px;">
                         </div>
                         <div class="col-12 mt-4 mb-4">
@@ -335,7 +310,83 @@
                         </div>
                     </div>
                 </form>
-                <!--------------------------- Info --------------------------->
+
+                <!--------------------------- Info sobre Cargo del Firmante --------------------------->
+                <dialog id="modal-info-cargo" class="col-12 p-3" aria-hidden="true"
+                    style="background-color: #ffffff; border: none; border-radius: 10px; position: flex; margin: auto; max-width: 700px; padding: 10px;">
+                    <p class="text-primary">Información para el Campo "Cargo del Firmante"</p>
+                    <hr>
+                    <div style="text-align: justify;">
+                        El campo "Cargo del Firmante" debe completarse con el título exacto del firmante. Esto incluye:
+                    </div>
+                    <div class="px-3 small">
+                        <p>
+                            <b>1. Representantes de Entidades:</b> Indique su cargo, como "Presidente de la Asociación de
+                            Vecinos" o "Secretario General del Sindicato".
+                        </p>
+                        <p>
+                            <b>2. Profesionales Independientes:</b> Especifique su título y especialidad, por ejemplo,
+                            "Ingeniero Civil", "Doctor en Medicina" o "Abogado del Bufete Jurídico ABC".
+                        </p>
+                        <p>
+                            <b>3. Funcionarios Públicos:</b> Mencione su cargo dentro de la institución, como "Director de
+                            Obras Públicas" o "Jefe de la Oficina de Planeamiento".
+                        </p>
+                        <p>
+                            <b>4. Otras Representaciones:</b> Detalle el cargo en instituciones como hospitales, clínicas o
+                            educativas, por ejemplo, "Director del Hospital Municipal" o "Rector de la Universidad XYZ".
+                        </p>
+                    </div>
+                    <div>
+                        Es esencial que la información sea precisa y veraz para garantizar la correcta identificación y
+                        validación del trámite.
+                    </div>
+                    <!-- <div class="row d-flex justify-content-center">
+                        <div style="width: 180px; padding: 10px;">
+                            <img src="/assets/images/GOOGLE_DRIVE.jpg" alt="" style="width: 100%;">
+                        </div>
+                        <div style="width: 180px;padding: 10px;">
+                            <img src="/assets/images/ONE_DRIVE.png" alt="" style="width: 100%;">
+                        </div>
+                        <div style="width: 180px;padding: 10px;">
+                            <img src="/assets/images/MEGA.png" alt="" style="width: 100%;">
+                        </div>
+                    </div> -->
+                    <div class="text-center">
+                        <button type="button" id="btn-cerrar-info-cargo" class="btn btn-outline-success m-3">
+                            Entiendo</button>
+                    </div>
+                </dialog>
+                <!--------------------------- Info sobre Anexos--------------------------->
+                <dialog id="modal-info-anexo" class="col-12 p-3" aria-hidden="true"
+                    style="background-color: #ffffff; border: none; border-radius: 10px; position: flex; margin: auto; max-width: 700px; padding: 10px;">
+                    <p class="text-primary">Urls permitidas</p>
+                    <hr>
+                    <div class="text-center">
+                        Si es un solo archivo, comparta la URL del mismo; pero si son varios archivos deberá
+                        comprimirlos y luego compartir <b class="text-primary">la URL sólo del archivo
+                            comprimido</b>, más no de toda la
+                        carpeta. <br>
+                        Las URLs permitidas de las páginas donde se pueden almacenar los archivos, deberán
+                        cumplir el siguiente formato:
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <div style="width: 180px; padding: 10px;">
+                            <img src="/assets/images/GOOGLE_DRIVE.jpg" alt="" style="width: 100%;">
+                        </div>
+                        <div style="width: 180px;padding: 10px;">
+                            <img src="/assets/images/ONE_DRIVE.png" alt="" style="width: 100%;">
+                        </div>
+                        <div style="width: 180px;padding: 10px;">
+                            <img src="/assets/images/MEGA.png" alt="" style="width: 100%;">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" id="btn-cerrar-info-anexo" class="btn btn-outline-secondary m-3">
+                            Cerrar</button>
+                    </div>
+                </dialog>
+                <!--------------------------- Info General de Horarios--------------------------->
                 <dialog class="" id="modal-message-alert"
                     style="background-color: #ffffff; border: none; border-radius: 10px; position: fixed; margin: auto; max-width: 900px; padding: 20px;">
                     <div class="" role="document">
@@ -345,9 +396,9 @@
                             </div>
                             <div class="modal-body text-justify small" style="text-align: justify; font-size: 12px;">
                                 Estimado(a) Usuario(a) se le comunica que los escritos ingresados por trámite digital
-                                serán recepcionados en el horario establecido en la Directiva N° 2-2022-GR.CAJ/DRTD
-                                numeral 7.2, literal f), que norma la Implementación y Funcionamiento la MESA DE PARTES
-                                DIGITAL: "TRÁMITE DIGITAL":
+                                serán recepcionados en el horario establecido que norma la Implementación y
+                                Funcionamiento en nuestro sistema <strong class="text-primary">TRAMITE
+                                    DOCUMENTARIO</strong> son:
                                 <br>
                                 <div class="m-auto px-3 py-1 mt-1"
                                     style="font-style: italic; border-radius: 4px; width: 98%; font-size: 12px; background-color: rgba(184, 176, 176, 0.731); border: 1px solid rgb(129, 123, 123);">
@@ -606,7 +657,6 @@
     </script> -->
     <script src="assets/js/script_menu.js"></script>
     <script src="assets/js/func_nuevo_tramite.js"></script>
-    <!-- <script src="/assets/js/tramite/nuevo_tramite.js"></script> -->
     <script src="/assets/js/tramite/nuevo_Tramite.js"></script>
 </body>
 

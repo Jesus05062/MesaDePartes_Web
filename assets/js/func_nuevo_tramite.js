@@ -37,6 +37,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }); */
 
     /* ---------------Funcionalidad del modal info de Anexo--------------- */
+    const btnAbrirModalCargo = document.querySelector("#btn-abrir-info-cargo");
+    const btnCerrarModalCargo = document.querySelector("#btn-cerrar-info-cargo");
+    const modalCargo = document.querySelector("#modal-info-cargo");
+
+    btnAbrirModalCargo.addEventListener("click", () => {
+        modalCargo.showModal();
+    });
+    btnCerrarModalCargo.addEventListener("click", () => {
+        modalCargo.close();
+    });
+
+    /* ---------------Funcionalidad del modal info de Anexo--------------- */
     const btnAbrirModalAnexo = document.querySelector("#btn-abrir-info-anexo");
     const btnCerrarModalAnexo = document.querySelector("#btn-cerrar-info-anexo");
     const modalAnexo = document.querySelector("#modal-info-anexo");
