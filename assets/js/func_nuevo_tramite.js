@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modalEmision.close();
     }); */
 
-    /* ---------------Funcionalidad del modal info de Anexo--------------- */
+    /* ---------------Funcionalidad del modal info de Cargo--------------- */
     const btnAbrirModalCargo = document.querySelector("#btn-abrir-info-cargo");
     const btnCerrarModalCargo = document.querySelector("#btn-cerrar-info-cargo");
     const modalCargo = document.querySelector("#modal-info-cargo");

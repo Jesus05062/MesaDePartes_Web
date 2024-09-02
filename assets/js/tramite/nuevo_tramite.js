@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const form = document.querySelector("form");
+    const submitNuevoTramite = document.querySelector("form");
     const body__container = document.querySelector("#body__container");
     const modal_message_success = document.querySelector("#modal-message-success");
 
@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const divErrores = document.getElementById("div-msg-error");
 
     const loadingDiv = document.querySelector("#loading");
-
 
     btnCerrarModal.addEventListener("click", () => {
         modal.close();
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
 
-    form.addEventListener("submit", function (event) {
+    submitNuevoTramite.addEventListener("submit", function (event) {
         event.preventDefault();
         submitForm();
     });
@@ -157,7 +156,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         ];
 
-        console.log(JSON.stringify(body));
         formData.append("body", JSON.stringify(body));
 
         const url = "https://munisayan.gob.pe/tramite/api/tds";
@@ -181,11 +179,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log("Expediente Registrado");
                 });
             } else if (res.status === 400) {
-                return res.json().then(respuesta => {
-                    console.error(`Mensaje: ${respuesta.msg}`);
-                    const msgerr = "• " + respuesta.msg;
-                    createErrors(msgerr);
-                    modal.showModal();
+                return res.json().then(response => {
+                    response.errors.forEach(error => {
+                        console.error(`Mensaje: ${error}`);
+                        const msgerr = "• " + error;
+                        createErrors(msgerr);
+                        modal.showModal();
+                    })
                 });
             } else if (res.status === 404) {
                 return res.json().then(respuesta => {

@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tramite Documentario</title>
+    <title>Trámite Documentario</title>
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
     <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/estilos.css">
     <script src="https://kit.fontawesome.com/017fac5817.js" crossorigin="anonymous"></script>
+    <!-- Agregar el logo -->
+    <link rel="icon" href="https://munisayan.gob.pe/Rentas/Recursos/logo1.png" type="image/x-icon">
 </head>
 
 <body id="body">
@@ -35,6 +37,10 @@
             max-width: 700px;
             padding: 10px;
         }
+
+        #modal-message-success-update {
+            margin: auto;
+        }
     </style>
 
     <header>
@@ -51,7 +57,7 @@
 
         <div class="name__page">
             <i class="fas fa-brasas" title="Mis Documentos"></i>
-            <p id="name_title" style="font-size: 18px;">Tramite Documentario</p>
+            <p id="name_title" style="font-size: 18px;">Trámite Documentario</p>
         </div>
 
         <div class="options__menu">
@@ -59,7 +65,7 @@
                 <div class="option__enum">
                     <img src="/assets/images/documento.png" alt="" title="Mis tramites">
                     <!-- <i class="fas fa-file" title="Mis Tramites"></i> -->
-                    <h6>Mis Tramites</h6>
+                    <h6>Mis Trámites</h6>
                 </div>
             </a>
         </div>
@@ -161,7 +167,7 @@
                                 OK
                             </div>
                             <div class="invalid-feedback">
-                                Definir Fecha del Tramite
+                                Definir Fecha del Trámite
                             </div>
                         </div>
                     </div>
@@ -253,6 +259,12 @@
                                     sudocumento)<span class="text-danger small">*</span> :</b></label>
                             <textarea id="id_asunto" class="form-control" name="asunto" id="" cols="40" rows="2"
                                 maxlength="1000" style="resize: none;" required></textarea>
+                            <div class="valid-feedback">
+                                OK
+                            </div>
+                            <div class="invalid-feedback">
+                                Es necesario
+                            </div>
                         </div>
                         <div class="col-md-6 mt-2">
                             <label class="form-label" for="id_dependencia"><b>Dependencia(s) Destino(s)<span
@@ -305,8 +317,10 @@
 
                             <input id="id_anexo" type="text" class="form-control" style="height: 50px;">
                         </div>
-                        <div class="col-12 mt-4 mb-4">
-                            <button type="submit" class="btn btn-primary " style="width: 100%;">Enviar</button>
+                        <div class="col-12 mt-4 mb-4 d-flex justify-content-center">
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary " style="width: 100%;">Enviar</button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -321,7 +335,8 @@
                     </div>
                     <div class="px-3 small">
                         <p>
-                            <b>1. Representantes de Entidades:</b> Indique su cargo, como "Presidente de la Asociación de
+                            <b>1. Representantes de Entidades:</b> Indique su cargo, como "Presidente de la Asociación
+                            de
                             Vecinos" o "Secretario General del Sindicato".
                         </p>
                         <p>
@@ -329,11 +344,13 @@
                             "Ingeniero Civil", "Doctor en Medicina" o "Abogado del Bufete Jurídico ABC".
                         </p>
                         <p>
-                            <b>3. Funcionarios Públicos:</b> Mencione su cargo dentro de la institución, como "Director de
+                            <b>3. Funcionarios Públicos:</b> Mencione su cargo dentro de la institución, como "Director
+                            de
                             Obras Públicas" o "Jefe de la Oficina de Planeamiento".
                         </p>
                         <p>
-                            <b>4. Otras Representaciones:</b> Detalle el cargo en instituciones como hospitales, clínicas o
+                            <b>4. Otras Representaciones:</b> Detalle el cargo en instituciones como hospitales,
+                            clínicas o
                             educativas, por ejemplo, "Director del Hospital Municipal" o "Rector de la Universidad XYZ".
                         </p>
                     </div>
@@ -500,58 +517,64 @@
             <div class="">
                 Actualizar Datos Principales
                 <hr>
-                <fieldset class="data-user p-3">
-                    <div class="row d-flex justify-content-center ">
+                <form action="">
 
-                        <div class="col-md-4 pt-2 pt-md-1">
-                            <label for="id_departamento_Field" class="form-label"><b>Departamento<span
-                                        class="text-danger small">*</span></b></label>
-                            <select name="departamento" class="form-control selectpicker"
-                                data-minimum-results-for-search="-1" style="width: 100%" data-minimum-input-length="0"
-                                placeholder="Departamento" id="id_departamento_Field">
-                            </select>
+                    <fieldset class="data-user p-3">
+                        <div class="row d-flex justify-content-center ">
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_departamento_Field" class="form-label"><b>Departamento<span
+                                            class="text-danger small">*</span></b></label>
+                                <select name="departamento" class="form-control selectpicker"
+                                    data-minimum-results-for-search="-1" style="width: 100%"
+                                    data-minimum-input-length="0" placeholder="Departamento" id="id_departamento_Field"
+                                    required>
+                                </select>
+                            </div>
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_provincia_Field" class="form-label"><b>Provincia<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <select name="provincia" class="form-control selectpicker"
+                                    data-minimum-results-for-search="-1" style="width: 100%"
+                                    data-minimum-input-length="0" placeholder="Provincia" id="id_provincia_Field"
+                                    required>
+                                </select>
+                            </div>
+                            <div class="col-md-4 pt-2 pt-md-1">
+                                <label for="id_distrito_Field" class="form-label"><b>Distrito<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <select name="distrito" class="form-control selectpicker"
+                                    data-minimum-results-for-search="-1" style="width: 100%"
+                                    data-minimum-input-length="0" placeholder="Distrito" id="id_distrito_Field"
+                                    required>
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="id_direccion_Field" class="form-label"><b>Dirección<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <input type="text" id="id_direccion_Field" class="form-control" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="id_telefono_Field" class="form-label"><b>Telefono<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <input type="text" name="" id="id_telefono_Field" class="form-control"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9)" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="id_email_Field" class="form-label"><b>Correo<span
+                                            class="text-danger small">*</span> :</b></label>
+                                <input type="email" name="email" maxlength="254" class="form-control"
+                                    placeholder="Ejemplo@gmail.com" required id="id_email_Field">
+                            </div>
                         </div>
-                        <div class="col-md-4 pt-2 pt-md-1">
-                            <label for="id_provincia_Field" class="form-label"><b>Provincia<span
-                                        class="text-danger small">*</span> :</b></label>
-                            <select name="provincia" class="form-control selectpicker"
-                                data-minimum-results-for-search="-1" style="width: 100%" data-minimum-input-length="0"
-                                placeholder="Provincia" id="id_provincia_Field">
-                            </select>
-                        </div>
-                        <div class="col-md-4 pt-2 pt-md-1">
-                            <label for="id_distrito_Field" class="form-label"><b>Distrito<span
-                                        class="text-danger small">*</span> :</b></label>
-                            <select name="distrito" class="form-control selectpicker"
-                                data-minimum-results-for-search="-1" style="width: 100%" data-minimum-input-length="0"
-                                placeholder="Distrito" id="id_distrito_Field">
-                            </select>
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="id_direccion_Field" class="form-label"><b>Dirección<span
-                                        class="text-danger small">*</span> :</b></label>
-                            <input type="text" id="id_direccion_Field" class="form-control" required>
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="id_telefono_Field" class="form-label"><b>Telefono<span
-                                        class="text-danger small">*</span> :</b></label>
-                            <input type="text" name="" id="id_telefono_Field" class="form-control"
-                                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9)" required>
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="id_email_Field" class="form-label"><b>Correo<span
-                                        class="text-danger small">*</span> :</b></label>
-                            <input type="email" name="email" maxlength="254" class="form-control"
-                                placeholder="Ejemplo@gmail.com" required id="id_email_Field">
-                        </div>
+                    </fieldset>
+
+                    <div class="text-center  pt-2">
+                        <button type="submit" id="btn_actualizar_datos" class="btn btn-primary">
+                            Actualizar
+                        </button>
                     </div>
-                </fieldset>
+                </form>
 
-                <div class="text-center pt-2">
-                    <button id="btn-cerrar-perfil-datos" class="btn btn-primary">
-                        Actualizar
-                    </button>
-                </div>
             </div>
         </div>
     </dialog>
@@ -581,14 +604,14 @@
             <br>
             <div>
                 Su solicitud está siendo procesada. Una vez aceptada se generará el número de expediente.
-                Esté pendiente de su bandeja <strong>Mis Tramites</strong> para saber el estado del documento.
+                Esté pendiente de su bandeja <strong>Mis Trámites</strong> para saber el estado del documento.
             </div>
             <br>
         </div>
         <div class="d-flex justify-content-center" style="display: flex;">
             <div class="text-center m-3">
                 <button type="button" id="btn-cerrar-info-anexo" class="btn btn-primary">
-                    <a href="/misTramites.html" style="text-decoration: none; color: white;">Ir a Mis Tramites</a>
+                    <a href="/misTramites.html" style="text-decoration: none; color: white;">Ir a Mis Trámites</a>
                 </button>
             </div>
             <div class="text-center m-3">
@@ -623,6 +646,22 @@
                 </div>
                 <hr>
                 <div class="modal-body text-justify small" id="div-msg-error">
+                </div>
+            </div>
+        </div>
+    </dialog>
+    <!---------------  Message Success ---------------->
+    <dialog class="justify-content-center p-0" id="modal-message-success-update" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true"
+        style="border: none; border-radius: 10px; width: 70%;background-color: #33333300;">
+        <div class="col-xl-7 p-3" style="background-color: #26f14fec; border: none; border-radius: 10px;margin: auto;">
+            <div class="modal-content">
+                <div class="modal-header d-flex">
+                    <h5 class="modal-title text-primary" id="exampleModalLabel"><strong>¡Felicidades!</strong>
+                    </h5>
+                </div>
+                <hr>
+                <div class="small" id="div-msg-success" style="font-weight: bold;">
                 </div>
             </div>
         </div>

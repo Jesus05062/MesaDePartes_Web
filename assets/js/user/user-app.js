@@ -30,6 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         for (const [key, value] of formData) {
             formObject[key] = key === 'documento' ? +value : value;
+            /* if (key === 'documento') {
+                formObject[key] = +value;
+            } if (key === "") {
+                
+            } else {
+                
+            } */
         }
 
         const url = "https://munisayan.gob.pe/tramite/api/user";
